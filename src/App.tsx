@@ -1,5 +1,11 @@
-function App() {
-  return <div className="App">App</div>;
-}
+import React from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { ROUTES } from './routes/routes';
 
-export default App;
+const router = createBrowserRouter(ROUTES);
+
+export default class App extends React.Component {
+  render() {
+    return <RouterProvider router={router} />;
+  }
+}
