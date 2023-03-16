@@ -33,7 +33,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run format && git add ."
+      "pre-commit": "echo '[Husky] pre-commit' && npm run format && git add ."
     }
   }
 }
