@@ -14,12 +14,18 @@ export default class Header extends React.Component<HeaderProps> {
         <nav>
           <ul className={styles.links}>
             <li>
-              <NavLink to="/" className={styles.link}>
+              <NavLink
+                to="/"
+                className={({ isActive }) => `${styles.link} ${isActive && styles.active}`}
+              >
                 Home
               </NavLink>
             </li>
             <li>
-              <NavLink to="about-us" className={styles.link}>
+              <NavLink
+                to="/about-us"
+                className={({ isActive }) => `${styles.link} ${isActive && styles.active}`}
+              >
                 About us
               </NavLink>
             </li>
