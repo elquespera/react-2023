@@ -1,6 +1,7 @@
 import React from 'react';
 import { getLocalStorage, setLocalStorage } from '../../lib/storage';
 import { EmptyProps } from '../../types';
+import Icon from '../Icon/Icon';
 import styles from './SearchBar.module.scss';
 
 interface SearchBarState {
@@ -26,6 +27,7 @@ export default class SearchBar extends React.Component<EmptyProps, SearchBarStat
   render() {
     return (
       <label className={styles.wrapper}>
+        <Icon type="search" className={styles.icon} />
         <input
           type="text"
           value={this.state.inputValue}

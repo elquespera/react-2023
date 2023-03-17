@@ -11,3 +11,7 @@ export interface PropertyData {
   address: string;
   dateAdded: number;
 }
+
+export const IconTypes = ['search'] as const;
+
+export type IconType = (typeof IconTypes)[number];
