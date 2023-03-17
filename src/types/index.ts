@@ -12,6 +12,4 @@ export interface PropertyData {
   dateAdded: number;
 }
 
-export const IconTypes = ['search'] as const;
-
-export type IconType = (typeof IconTypes)[number];
+export type IconType = 'search';
