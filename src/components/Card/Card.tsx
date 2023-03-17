@@ -2,6 +2,8 @@ import React from 'react';
 import { UNSPLASH_URL } from '../../consts';
 import { PropertyData } from '../../types';
 import styles from './Card.module.scss';
+import getRandomNumber from '../../lib/getRandomNumber';
+import convertDate from '../../lib/convertDate';
 
 interface CardProps {
   data: PropertyData;
@@ -18,7 +20,7 @@ export default class Card extends React.Component<CardProps> {
         <div className={styles.imageWrapper}>
           <img
             className={styles.image}
-            src={`${UNSPLASH_URL}&sig=${Math.floor(Math.random() * 200)}`}
+            src={`${UNSPLASH_URL}&sig=${getRandomNumber(200)}`}
             alt={description}
           />
         </div>
@@ -26,9 +28,7 @@ export default class Card extends React.Component<CardProps> {
         <div className={styles.body}>
           <h3 className={styles.description}>{description}</h3>
           <span className={styles.address}>{address}</span>
-          <span className={styles.date}>{`Added on ${new Date(dateAdded).toLocaleDateString(
-            'en'
-          )}`}</span>
+          <span className={styles.date}>{`Added on ${convertDate(dateAdded)}`}</span>
         </div>
       </li>
     );
