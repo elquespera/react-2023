@@ -6,8 +6,20 @@ export default class Header extends React.Component {
   render() {
     return (
       <header className={styles.header}>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="about-us">About us</NavLink>
+        <nav>
+          <ul className={styles.links}>
+            <li>
+              <NavLink to="/" className={styles.link}>
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="about-us" className={styles.link}>
+                About us
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
       </header>
     );
   }

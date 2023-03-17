@@ -1,6 +1,18 @@
 @use '../../styles/variables' as vars;
 
 .header {
+  display: flex;
+  align-items: center;
+  justify-content: end;
   width: 100%;
   height: vars.$header-height;
+  padding: 1rem 2rem;
+
+  .links {
+    display: flex;
+
+    .link {
+      padding: 1rem 0.5rem;
+    }
+  }
 }
