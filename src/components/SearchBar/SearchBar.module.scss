@@ -1,3 +1,12 @@
 .wrapper {
-  background: blue;
+  display: block;
+  padding: 1rem;
+  border: 2px solid salmon;
+  border-radius: 2rem;
+
+  .input {
+    width: 100%;
+    border: 0;
+    outline: 0;
+  }
 }

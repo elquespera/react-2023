@@ -6,6 +6,10 @@ const router = createBrowserRouter(ROUTES);
 
 export default class App extends React.Component {
   render() {
-    return <RouterProvider router={router} />;
+    return (
+      <main>
+        <RouterProvider router={router} />
+      </main>
+    );
   }
 }

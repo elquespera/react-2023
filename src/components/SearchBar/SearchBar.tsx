@@ -3,6 +3,10 @@ import styles from './SearchBar.module.scss';
 
 export default class SearchBar extends React.Component {
   render() {
-    return <div className={styles.wrapper}>SearchBar</div>;
+    return (
+      <label className={styles.wrapper}>
+        <input type="text" className={styles.input} />
+      </label>
+    );
   }
 }
