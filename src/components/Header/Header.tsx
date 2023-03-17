@@ -2,10 +2,15 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
 
-export default class Header extends React.Component {
+interface HeaderProps {
+  title?: string;
+}
+
+export default class Header extends React.Component<HeaderProps> {
   render() {
     return (
       <header className={styles.header}>
+        <h2>{this.props.title}</h2>
         <nav>
           <ul className={styles.links}>
             <li>

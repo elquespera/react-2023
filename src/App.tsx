@@ -10,11 +10,9 @@ export default class App extends React.Component {
     return (
       <BrowserRouter>
         <Routes>
-          <Route element={<Layout />}>
-            <Route path="/" element={<Main />} />
-            <Route path="/about-us" element={<AboutUs />} />
-            <Route path="*" element={<Route404 />} />
-          </Route>
+          <Route path="/" element={<Layout title="Home" page={<Main />} />} />
+          <Route path="/about-us" element={<Layout title="About Us" page={<AboutUs />} />} />
+          <Route path="*" element={<Layout title="Not Found" page={<Route404 />} />} />
         </Routes>
       </BrowserRouter>
     );

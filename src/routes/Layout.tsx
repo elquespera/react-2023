@@ -1,15 +1,17 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
 import Header from '../components/Header/Header';
 
-export default class Layout extends React.Component {
+interface LayoutProps {
+  title?: string;
+  page?: React.ReactNode;
+}
+
+export default class Layout extends React.Component<LayoutProps> {
   render() {
     return (
       <>
-        <Header />
-        <main>
-          <Outlet />
-        </main>
+        <Header title={this.props.title} />
+        <main>{this.props.page}</main>
       </>
     );
   }
