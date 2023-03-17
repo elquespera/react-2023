@@ -1,6 +1,7 @@
 import React from 'react';
 import { CARDS } from '../../assets/cards';
 import Card from '../Card/Card';
+import styles from './Cards.module.scss';
 
 interface CardsProps {
   count?: number;
@@ -13,7 +14,7 @@ export default class Cards extends React.Component<CardsProps> {
 
   render() {
     return (
-      <ul>
+      <ul className={styles.cards}>
         {CARDS.map((data) => (
           <Card key={data.id} data={data} />
         ))}
