@@ -1,12 +1,17 @@
 .wrapper {
   display: block;
   padding: 1rem;
-  border: 2px solid salmon;
+  border: 2px solid var(--clr-primary);
   border-radius: 2rem;
+
+  &:focus-within {
+    border-color: var(--clr-primary-dark);
+  }
 
   .input {
     width: 100%;
+    font-size: 1.2rem;
     border: 0;
-    outline: 0;
+    outline-color: transparent;
   }
 }

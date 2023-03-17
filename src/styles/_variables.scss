@@ -1,2 +1,11 @@
 $app-width: 900px;
 $header-height: 5rem;
+
+:root {
+  --clr-primary: #3f91b8;
+  --clr-primary-dark: #235069;
+  --clr-primary-light: #c9e1ee;
+
+  --clr-text: black;
+  --clr-text-contrast: white;
+}
