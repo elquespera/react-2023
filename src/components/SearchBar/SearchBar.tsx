@@ -19,9 +19,12 @@ export default class SearchBar extends React.Component<EmptyProps, SearchBarStat
     if (search) this.setState({ inputValue: search });
   }
 
+  componentWillUnmount() {
+    setLocalStorage({ search: this.state.inputValue });
+  }
+
   handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
     this.setState({ inputValue: event.target.value });
-    setLocalStorage({ search: event.target.value });
   }
 
   render() {
