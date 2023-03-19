@@ -2,7 +2,7 @@ import { describe, expect, test } from 'vitest';
 import { render } from '@testing-library/react';
 import Cards from './Cards';
 
-describe('<Card> component', () => {
+describe('<Cards> component', () => {
   const data = [
     {
       id: 1,
@@ -29,7 +29,7 @@ describe('<Card> component', () => {
     expect(container.firstChild?.nodeName.toUpperCase()).toEqual('UL');
   });
 
-  test('Shoud have 2 child nodes', () => {
+  test('Shoud have 2 cards', () => {
     const { container } = render(<Cards data={data} />);
     expect(container.firstChild?.childNodes.length).toEqual(2);
   });
