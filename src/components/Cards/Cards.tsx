@@ -1,9 +1,10 @@
 import React from 'react';
-import { CARDS } from '../../assets/cards';
+import { PropertyData } from '../../types';
 import Card from '../Card/Card';
 import styles from './Cards.module.scss';
 
 interface CardsProps {
+  data: PropertyData[];
   count?: number;
 }
 
@@ -15,7 +16,7 @@ export default class Cards extends React.Component<CardsProps> {
   render() {
     return (
       <ul className={styles.cards}>
-        {CARDS.map((data) => (
+        {this.props.data.map((data) => (
           <Card key={data.id} data={data} />
         ))}
       </ul>
