@@ -14,11 +14,16 @@ describe('<Card> component', () => {
 
   test('Shoud have description', () => {
     render(<Card data={cardData} />);
-
     expect(screen.getByText(cardData.description)).toBeDefined();
   });
+
   test('Shoud have address', () => {
     render(<Card data={cardData} />);
     expect(screen.getByText(cardData.address)).toBeDefined();
+  });
+
+  test('Shoud have price', () => {
+    render(<Card data={cardData} />);
+    expect(screen.getByText(`$${cardData.price}`)).toBeDefined();
   });
 });
