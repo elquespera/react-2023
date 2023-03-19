@@ -34,6 +34,7 @@ export default class SearchBar extends React.Component<EmptyProps, SearchBarStat
         <input
           type="text"
           value={this.state.inputValue}
+          placeholder="Search"
           onChange={this.handleInputChange.bind(this)}
           className={styles.input}
         />
