@@ -5,16 +5,18 @@ import { PropertyData } from '../../types';
 
 describe('<Card> component', () => {
   const cardData: PropertyData = {
-    description: 'description',
-    address: 'address',
     id: 0,
+    title: 'title',
+    address: 'address',
+    rooms: '4',
     price: 200000,
-    dateAdded: Date.now(),
+    purpose: 'sale',
+    availableFrom: Date.now(),
   };
 
-  test('Shoud have description', () => {
+  test('Shoud have title', () => {
     render(<Card data={cardData} />);
-    expect(screen.getByText(cardData.description)).toBeDefined();
+    expect(screen.getByText(cardData.title)).toBeDefined();
   });
 
   test('Shoud have address', () => {
