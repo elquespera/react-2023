@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Input.module.scss';
 
 interface InputProps {
-  type?: 'text' | 'date' | 'number' | 'select' | 'radio' | 'checkbox';
+  type?: 'text' | 'date' | 'number' | 'file' | 'select' | 'radio' | 'checkbox';
   id?: string;
   inputRef?: React.RefObject<HTMLInputElement>;
   selectRef?: React.RefObject<HTMLSelectElement>;
@@ -14,7 +14,7 @@ interface InputProps {
 }
 
 const labelBefore = (type?: string) =>
-  ['text', 'date', 'number', 'select', ''].includes(type || '');
+  ['text', 'date', 'number', 'file', 'select', ''].includes(type || '');
 
 export default class Input extends React.Component<InputProps> {
   constructor(props: InputProps) {
@@ -38,7 +38,12 @@ export default class Input extends React.Component<InputProps> {
               {label}
             </label>
           ) : (
-            <input type={type || 'text'} id={id} ref={inputRef} />
+            <input
+              type={type || 'text'}
+              id={id}
+              ref={inputRef}
+              accept={type === 'file' ? 'image/*' : ''}
+            />
           )}
 
           {error && errorMsg && <span className={styles.error}>{errorMsg}</span>}

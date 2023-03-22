@@ -31,6 +31,7 @@ export default class PropertyForm extends React.Component<PropertyFormProps, Pro
   sellRef: React.RefObject<HTMLInputElement> = React.createRef();
   rentRef: React.RefObject<HTMLInputElement> = React.createRef();
   agreeToTermsRef: React.RefObject<HTMLInputElement> = React.createRef();
+  imageRef: React.RefObject<HTMLInputElement> = React.createRef();
 
   constructor(props: PropertyFormProps) {
     super(props);
@@ -55,6 +56,9 @@ export default class PropertyForm extends React.Component<PropertyFormProps, Pro
 
   handleSubmit(event: React.FormEvent) {
     event.preventDefault();
+    const file = this.imageRef.current?.files ? this.imageRef.current.files[0] : null;
+    const image = file ? URL.createObjectURL(file) : undefined;
+
     if (this.validateForm()) {
       if (this.props.onSubmit) {
         const data: PropertyData = {
@@ -65,6 +69,7 @@ export default class PropertyForm extends React.Component<PropertyFormProps, Pro
           rooms: this.roomsRef.current?.value || '',
           availableFrom: new Date(this.availableFromRef.current?.value || '').getTime(),
           purpose: this.sellRef.current?.checked ? 'sale' : 'rent',
+          image,
         };
         this.props.onSubmit(data);
       }
@@ -121,6 +126,8 @@ export default class PropertyForm extends React.Component<PropertyFormProps, Pro
             error={errors.availableFrom}
             errorMsg="Please provide property availability"
           />
+
+          <Input type="file" inputRef={this.imageRef} label="Image" />
 
           <span />
 
