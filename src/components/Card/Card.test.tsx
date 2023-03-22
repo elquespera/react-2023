@@ -1,18 +1,10 @@
 import { describe, expect, test } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import Card from './Card';
-import { PropertyData } from '../../types';
+import { MOCK_CARDS } from '../../assets/mocks';
 
 describe('<Card> component', () => {
-  const cardData: PropertyData = {
-    id: 0,
-    title: 'title',
-    address: 'address',
-    rooms: '4',
-    price: 200000,
-    purpose: 'sale',
-    availableFrom: Date.now(),
-  };
+  const cardData = MOCK_CARDS[0];
 
   test('Shoud have title', () => {
     render(<Card data={cardData} />);
