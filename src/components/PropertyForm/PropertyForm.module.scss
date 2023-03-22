@@ -1,0 +1,31 @@
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  .table {
+    margin: 2rem auto;
+    display: grid;
+    gap: 1rem;
+    max-width: 40rem;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: auto 1fr;
+
+    label {
+      text-align: end;
+    }
+
+    input[type='text'],
+    input[type='date'],
+    select {
+      padding: 0.5em;
+    }
+  }
+  .radioLabel {
+    display: flex;
+    gap: 0.5em;
+  }
+}
