@@ -5,11 +5,11 @@ export interface LocalStorageData {
 }
 
 export interface PropertyData {
-  id: number;
+  id: number | string;
   title: string;
   address: string;
   price: number;
-  rooms: number;
+  rooms: string;
   availableFrom: number;
   purpose: 'sale' | 'rent';
 }

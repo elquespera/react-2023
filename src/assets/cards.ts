@@ -7,7 +7,7 @@ export const CARDS: PropertyData[] = [
     title: 'Stylish 3-bedroom townhouse with a rooftop deck',
     address: '1234 Smith St, San Francisco, CA 94129',
     availableFrom: new Date('2023-01-02').getTime(),
-    rooms: 3,
+    rooms: '3',
     purpose: 'sale',
   },
   {
@@ -16,7 +16,7 @@ export const CARDS: PropertyData[] = [
     title: 'Cozy 2-bedroom apartment in the heart of downtown',
     address: '5678 Market St, San Francisco, CA 94102',
     availableFrom: new Date('2023-01-05').getTime(),
-    rooms: 2,
+    rooms: '2',
     purpose: 'rent',
   },
   {
@@ -25,7 +25,7 @@ export const CARDS: PropertyData[] = [
     title: 'Spacious 4-bedroom house with a pool and garage',
     address: '9101 Maple Ave, Los Angeles, CA 90015',
     availableFrom: new Date('2023-01-10').getTime(),
-    rooms: 4,
+    rooms: '4',
     purpose: 'sale',
   },
   {
@@ -34,7 +34,7 @@ export const CARDS: PropertyData[] = [
     title: 'Small 1-room studio in the city',
     address: '1212 Oak St, New York, NY 10001',
     availableFrom: new Date('2023-01-15').getTime(),
-    rooms: 1,
+    rooms: '1',
     purpose: 'rent',
   },
   {
@@ -43,7 +43,7 @@ export const CARDS: PropertyData[] = [
     title: 'Modern 2-bedroom condo with a balcony and city views',
     address: '3456 Pine St, San Francisco, CA 94102',
     availableFrom: new Date('2023-02-01').getTime(),
-    rooms: 2,
+    rooms: '2',
     purpose: 'sale',
   },
   {
@@ -52,7 +52,7 @@ export const CARDS: PropertyData[] = [
     title: 'Spacious 3-bedroom apartment with a view of the park',
     address: '7890 Park Ave, New York, NY 10021',
     availableFrom: new Date('2023-02-05').getTime(),
-    rooms: 3,
+    rooms: '3',
     purpose: 'sale',
   },
   {
@@ -61,7 +61,7 @@ export const CARDS: PropertyData[] = [
     title: 'Luxurious 5-bedroom house with a pool and ocean view',
     address: '2345 Ocean Blvd, Malibu, CA 90265',
     availableFrom: new Date('2023-02-10').getTime(),
-    rooms: 5,
+    rooms: '5',
     purpose: 'rent',
   },
   {
@@ -70,7 +70,7 @@ export const CARDS: PropertyData[] = [
     title: 'Cozy 1-bedroom cottage with a fireplace',
     address: '4567 Willow Rd, Seattle, WA 98103',
     availableFrom: new Date('2023-02-15').getTime(),
-    rooms: 1,
+    rooms: '1',
     purpose: 'sale',
   },
 ];

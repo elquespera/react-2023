@@ -1,8 +1,9 @@
 import React from 'react';
+import { PropertyData } from '../../types';
 import styles from './PropertyForm.module.scss';
 
 interface PropertyFormProps {
-  onSubmit?: () => void;
+  onSubmit?: (data: PropertyData) => void;
 }
 
 interface ValidationErrors {
@@ -63,6 +64,18 @@ export default class PropertyForm extends React.Component<PropertyFormProps, Pro
   handleSubmit(event: React.FormEvent) {
     event.preventDefault();
     if (this.validateForm()) {
+      if (this.props.onSubmit) {
+        const data: PropertyData = {
+          id: crypto.randomUUID(),
+          title: this.titleRef.current?.value || '',
+          address: this.addressRef.current?.value || '',
+          price: parseInt(this.priceRef.current?.value || '') || 0,
+          rooms: this.roomsRef.current?.value || '',
+          availableFrom: new Date(this.availableFromRef.current?.value || '').getTime(),
+          purpose: this.sellRef.current?.checked ? 'sale' : 'rent',
+        };
+        this.props.onSubmit(data);
+      }
       this.formRef.current?.reset();
     }
   }
