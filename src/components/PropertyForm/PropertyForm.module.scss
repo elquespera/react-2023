@@ -6,11 +6,12 @@
   gap: 1rem;
 
   .table {
-    margin: 2rem auto;
+    // margin: 2rem auto;
     display: grid;
     gap: 1rem;
     max-width: 40rem;
-    align-items: center;
+    min-width: 80%;
+    align-items: baseline;
     justify-content: center;
     grid-template-columns: auto 1fr;
 
@@ -19,6 +20,7 @@
     }
 
     input[type='text'],
+    input[type='number'],
     input[type='date'],
     select {
       padding: 0.5em;
@@ -27,5 +29,21 @@
   .radioLabel {
     display: flex;
     gap: 0.5em;
+  }
+
+  .radioWrapper {
+    display: flex;
+    gap: 1em;
+  }
+
+  .inputWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+
+    .error {
+      color: red;
+      font-size: 0.875em;
+    }
   }
 }
