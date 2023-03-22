@@ -1,5 +1,6 @@
 import React from 'react';
 import { PropertyData } from '../../types';
+import Input from '../Input/Input';
 import styles from './PropertyForm.module.scss';
 
 interface PropertyFormProps {
@@ -21,29 +22,20 @@ interface PropertyFormState {
 }
 
 export default class PropertyForm extends React.Component<PropertyFormProps, PropertyFormState> {
-  formRef: React.RefObject<HTMLFormElement>;
-  titleRef: React.RefObject<HTMLInputElement>;
-  addressRef: React.RefObject<HTMLInputElement>;
-  priceRef: React.RefObject<HTMLInputElement>;
-  roomsRef: React.RefObject<HTMLSelectElement>;
-  availableFromRef: React.RefObject<HTMLInputElement>;
-  sellRef: React.RefObject<HTMLInputElement>;
-  rentRef: React.RefObject<HTMLInputElement>;
-  agreeToTermsRef: React.RefObject<HTMLInputElement>;
+  formRef: React.RefObject<HTMLFormElement> = React.createRef();
+  titleRef: React.RefObject<HTMLInputElement> = React.createRef();
+  addressRef: React.RefObject<HTMLInputElement> = React.createRef();
+  priceRef: React.RefObject<HTMLInputElement> = React.createRef();
+  roomsRef: React.RefObject<HTMLSelectElement> = React.createRef();
+  availableFromRef: React.RefObject<HTMLInputElement> = React.createRef();
+  sellRef: React.RefObject<HTMLInputElement> = React.createRef();
+  rentRef: React.RefObject<HTMLInputElement> = React.createRef();
+  agreeToTermsRef: React.RefObject<HTMLInputElement> = React.createRef();
 
   constructor(props: PropertyFormProps) {
     super(props);
     this.state = { errors: {} };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.formRef = React.createRef();
-    this.titleRef = React.createRef();
-    this.addressRef = React.createRef();
-    this.priceRef = React.createRef();
-    this.roomsRef = React.createRef();
-    this.availableFromRef = React.createRef();
-    this.sellRef = React.createRef();
-    this.rentRef = React.createRef();
-    this.agreeToTermsRef = React.createRef();
   }
 
   validateForm(): boolean {
@@ -86,60 +78,68 @@ export default class PropertyForm extends React.Component<PropertyFormProps, Pro
       <form ref={this.formRef} className={styles.form} onSubmit={this.handleSubmit}>
         <h3>Add new property</h3>
         <div className={styles.table}>
-          <label htmlFor="property-title">Title</label>
-          <div className={styles.inputWrapper}>
-            <input type="text" id="property-title" ref={this.titleRef} />
-            {errors?.title && <span className={styles.error}>Please provide property title</span>}
-          </div>
+          <Input
+            id="property-title"
+            inputRef={this.titleRef}
+            label="Title"
+            error={errors.title}
+            errorMsg="Please provide property title"
+          />
 
-          <label htmlFor="property-address">Address</label>
-          <div className={styles.inputWrapper}>
-            <input type="text" id="property-address" ref={this.addressRef} />
-            {errors?.address && (
-              <span className={styles.error}>Please provide property address</span>
-            )}
-          </div>
+          <Input
+            id="property-address"
+            inputRef={this.addressRef}
+            label="Address"
+            error={errors.address}
+            errorMsg="Please provide property address"
+          />
 
-          <label htmlFor="property-price">Price</label>
-          <div className={styles.inputWrapper}>
-            <input type="number" id="property-price" ref={this.priceRef} />
-            {errors?.price && <span className={styles.error}>Please provide property price</span>}
-          </div>
+          <Input
+            id="property-price"
+            type="number"
+            inputRef={this.priceRef}
+            label="Price"
+            error={errors.price}
+            errorMsg="Please provide property price"
+          />
 
-          <label htmlFor="property-rooms">Rooms</label>
-          <div className={styles.inputWrapper}>
-            <select id="property-rooms" ref={this.roomsRef}>
-              <option></option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5+</option>
-            </select>
-            {errors?.rooms && (
-              <span className={styles.error}>Please select the number of rooms</span>
-            )}
-          </div>
+          <Input
+            id="property-rooms"
+            type="select"
+            selectRef={this.roomsRef}
+            label="Rooms"
+            options={['', '1', '2', '3', '4', '5+']}
+            error={errors.rooms}
+            errorMsg="Please select the number of rooms"
+          />
 
-          <label htmlFor="property-available-from">Available from</label>
-          <div className={styles.inputWrapper}>
-            <input type="date" id="property-available-from" ref={this.availableFromRef} />
-            {errors?.availableFrom && (
-              <span className={styles.error}>Please provide property availability</span>
-            )}
-          </div>
+          <Input
+            id="property-available-from"
+            type="date"
+            inputRef={this.availableFromRef}
+            label="Available From"
+            error={errors.availableFrom}
+            errorMsg="Please provide property availability"
+          />
 
-          <label>Purpose</label>
+          <span />
+
           <div className={styles.inputWrapper}>
             <div className={styles.radioWrapper}>
-              <label className={styles.radioLabel}>
-                <input type="radio" ref={this.sellRef} name="sell-or-rent" value="sell" />
-                Sell
-              </label>
-              <label className={styles.radioLabel}>
-                <input type="radio" ref={this.rentRef} name="sell-or-rent" value="rent" />
-                Rent
-              </label>
+              <Input
+                id="sell-or-rent"
+                type="radio"
+                inputRef={this.sellRef}
+                label="Sell"
+                value="sell"
+              />
+              <Input
+                id="sell-or-rent"
+                type="radio"
+                inputRef={this.rentRef}
+                label="Rent"
+                value="rent"
+              />
             </div>
             {errors?.sellOrRent && (
               <span className={styles.error}>Please select the purpose of listing </span>
@@ -147,16 +147,14 @@ export default class PropertyForm extends React.Component<PropertyFormProps, Pro
           </div>
         </div>
 
-        <div className={styles.inputWrapper}>
-          <label className={styles.radioLabel}>
-            <input type="checkbox" ref={this.agreeToTermsRef} />I agree to the Terms & Conditions
-          </label>
-          {errors?.agreeToTerms && (
-            <span className={styles.error}>
-              You have to agree to T&C before adding the property
-            </span>
-          )}
-        </div>
+        <Input
+          type="checkbox"
+          inputRef={this.agreeToTermsRef}
+          label="I agree to the Terms & Conditions"
+          error={errors.agreeToTerms}
+          errorMsg="You have to agree to T&C before adding the property"
+        />
+
         <button className={styles.submit} type="submit">
           Submit property
         </button>

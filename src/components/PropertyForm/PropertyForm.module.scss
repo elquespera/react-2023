@@ -6,7 +6,6 @@
   gap: 1rem;
 
   .table {
-    // margin: 2rem auto;
     display: grid;
     gap: 1rem;
     max-width: 40rem;
@@ -17,13 +16,6 @@
 
     label {
       text-align: end;
-    }
-
-    input[type='text'],
-    input[type='number'],
-    input[type='date'],
-    select {
-      padding: 0.5em;
     }
   }
   .radioLabel {

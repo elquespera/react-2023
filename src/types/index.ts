@@ -12,6 +12,7 @@ export interface PropertyData {
   rooms: string;
   availableFrom: number;
   purpose: 'sale' | 'rent';
+  image?: string;
 }
 
 export type IconType = 'search';

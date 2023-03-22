@@ -14,13 +14,13 @@ export default class Card extends React.Component<CardProps> {
     super(props);
   }
   render() {
-    const { title, address, price, availableFrom, rooms, purpose } = this.props.data;
+    const { title, address, price, availableFrom, rooms, purpose, image } = this.props.data;
     return (
       <li className={styles.card}>
         <div className={styles.imageWrapper}>
           <img
             className={styles.image}
-            src={`${UNSPLASH_URL}&sig=${getRandomNumber(200)}`}
+            src={image || `${UNSPLASH_URL}&sig=${getRandomNumber(200)}`}
             alt={title}
           />
         </div>
