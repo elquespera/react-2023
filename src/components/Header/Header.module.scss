@@ -11,21 +11,5 @@
   .links {
     display: flex;
     gap: 0.5em;
-
-    .link {
-      padding: 0.5rem 1rem;
-      border-radius: 1rem;
-
-      &.active {
-        color: var(--clr-text-contrast);
-        background-color: var(--clr-primary);
-      }
-
-      &:hover,
-      &:focus-visible {
-        color: var(--clr-text-contrast);
-        background-color: var(--clr-primary-dark);
-      }
-    }
   }
 }

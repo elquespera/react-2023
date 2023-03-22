@@ -1,23 +1,17 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { ROUTES } from './routes';
 import AboutUs from './routes/AboutUs';
-import AddProperty from './routes/AddProperty';
 import Layout from './routes/Layout';
-import Main from './routes/Main';
-import Route404 from './routes/Route404';
 
 export default class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Layout title="Home" page={<Main />} />} />
-          <Route path="/about-us" element={<Layout title="About Us" page={<AboutUs />} />} />
-          <Route
-            path="/add-property"
-            element={<Layout title="Add Property" page={<AddProperty />} />}
-          />
-          <Route path="*" element={<Layout title="Not Found" page={<Route404 />} />} />
+          {ROUTES.map(({ to, title, page: Page }) => (
+            <Route key={to} path={to} element={<Layout title={title} page={<Page />} />} />
+          ))}
         </Routes>
       </BrowserRouter>
     );
