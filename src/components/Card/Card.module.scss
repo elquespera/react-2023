@@ -22,17 +22,25 @@
     }
   }
 
+  .purpose,
   .price {
     position: absolute;
-    right: 0;
-    top: 0;
     padding: 0.5rem 1rem;
-    border-radius: 0 0 0 1rem;
     overflow: hidden;
     font-weight: bold;
     font-size: 1.2em;
     color: var(--clr-text-contrast);
     background-color: var(--clr-primary);
+  }
+
+  .purpose {
+    border-radius: 0 0 1rem 0;
+  }
+
+  .price {
+    right: 0;
+    top: 0;
+    border-radius: 0 0 0 1rem;
   }
 
   .body {
@@ -42,7 +50,7 @@
     gap: 1rem;
     padding: 1rem;
 
-    .description {
+    .title {
       color: var(--clr-primary);
     }
 

@@ -6,10 +6,12 @@ export interface LocalStorageData {
 
 export interface PropertyData {
   id: number;
-  price: number;
-  description: string;
+  title: string;
   address: string;
-  dateAdded: number;
+  price: number;
+  rooms: number;
+  availableFrom: number;
+  purpose: 'sale' | 'rent';
 }
 
 export type IconType = 'search';

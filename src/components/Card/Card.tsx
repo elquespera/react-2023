@@ -14,21 +14,23 @@ export default class Card extends React.Component<CardProps> {
     super(props);
   }
   render() {
-    const { description, address, price, dateAdded } = this.props.data;
+    const { title, address, price, availableFrom, rooms, purpose } = this.props.data;
     return (
       <li className={styles.card}>
         <div className={styles.imageWrapper}>
           <img
             className={styles.image}
             src={`${UNSPLASH_URL}&sig=${getRandomNumber(200)}`}
-            alt={description}
+            alt={title}
           />
         </div>
+        <span className={styles.purpose}>{purpose}</span>
         <span className={styles.price}>${price}</span>
         <div className={styles.body}>
-          <h3 className={styles.description}>{description}</h3>
-          <span className={styles.address}>{address}</span>
-          <span className={styles.date}>{`Added on ${convertDate(dateAdded)}`}</span>
+          <h3 className={styles.title}>{title}</h3>
+          <span>{address}</span>
+          <span>{`Rooms: ${rooms}`}</span>
+          <span className={styles.date}>{`Available from ${convertDate(availableFrom)}`}</span>
         </div>
       </li>
     );
