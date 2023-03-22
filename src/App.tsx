@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ROUTES } from './routes';
-import AboutUs from './routes/AboutUs';
 import Layout from './routes/Layout';
 
 export default class App extends React.Component {
