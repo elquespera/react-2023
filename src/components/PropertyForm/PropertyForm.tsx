@@ -157,7 +157,9 @@ export default class PropertyForm extends React.Component<PropertyFormProps, Pro
             </span>
           )}
         </div>
-        <button type="submit">Submit property</button>
+        <button className={styles.submit} type="submit">
+          Submit property
+        </button>
       </form>
     );
   }

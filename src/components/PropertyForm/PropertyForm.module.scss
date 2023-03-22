@@ -46,4 +46,17 @@
       font-size: 0.875em;
     }
   }
+
+  .submit {
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    border: none;
+    color: var(--clr-text-contrast);
+    background-color: var(--clr-primary);
+
+    &:hover,
+    &:focus-visible {
+      background-color: var(--clr-primary-dark);
+    }
+  }
 }
