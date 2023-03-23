@@ -3,11 +3,25 @@
 .form {
   width: 100%;
   margin: 0 auto;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
   max-width: 40rem;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: var(--clr-primary);
+    z-index: -1;
+    opacity: 0.15;
+  }
 
   .table {
     display: grid;

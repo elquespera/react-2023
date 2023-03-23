@@ -1,4 +1,5 @@
 import React from 'react';
+import { ADDRESS_PATTERN, TITLE_PATTERN } from '../../consts';
 import { PropertyData } from '../../types';
 import Input from '../Input/Input';
 import styles from './PropertyForm.module.scss';
@@ -39,13 +40,25 @@ export default class PropertyForm extends React.Component<PropertyFormProps, Pro
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  checkInputError(
+    ref: React.RefObject<HTMLInputElement | HTMLSelectElement>,
+    pattern?: RegExp | ((value: string) => boolean)
+  ): boolean {
+    const input = ref.current;
+    if (!input) return false;
+    const value = input.value;
+    if (pattern === undefined) return value === '';
+    if (typeof pattern === 'function') return pattern(value);
+    return pattern.test(input.value.trim()) === false;
+  }
+
   validateForm(): boolean {
     const errors: ValidationErrors = {
-      title: this.titleRef.current?.value === '',
-      address: this.addressRef.current?.value === '',
-      price: this.priceRef.current?.value === '',
-      rooms: this.roomsRef.current?.value === '',
-      availableFrom: this.availableFromRef.current?.value === '',
+      title: this.checkInputError(this.titleRef, TITLE_PATTERN),
+      address: this.checkInputError(this.addressRef, ADDRESS_PATTERN),
+      price: this.checkInputError(this.priceRef, (value) => value === '' || parseInt(value) <= 0),
+      rooms: this.checkInputError(this.roomsRef),
+      availableFrom: this.checkInputError(this.availableFromRef),
       sellOrRent: !this.sellRef.current?.checked && !this.rentRef.current?.checked,
       agreeToTerms: !this.agreeToTermsRef.current?.checked,
     };
@@ -89,7 +102,7 @@ export default class PropertyForm extends React.Component<PropertyFormProps, Pro
             inputRef={this.titleRef}
             label="Title"
             error={errors.title}
-            errorMsg="Please provide property title"
+            errorMsg="Please provide property title (at least 3 characters)"
           />
 
           <Input
@@ -98,7 +111,7 @@ export default class PropertyForm extends React.Component<PropertyFormProps, Pro
             inputRef={this.addressRef}
             label="Address"
             error={errors.address}
-            errorMsg="Please provide property address"
+            errorMsg="Please provide property address (at least 10 characters)"
           />
 
           <Input
@@ -108,7 +121,7 @@ export default class PropertyForm extends React.Component<PropertyFormProps, Pro
             inputRef={this.priceRef}
             label="Price"
             error={errors.price}
-            errorMsg="Please provide property price"
+            errorMsg="Please provide property price (must be a positive number)"
           />
 
           <Input
