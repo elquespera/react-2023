@@ -1,9 +1,9 @@
 import React from 'react';
-import { UNSPLASH_URL } from '../../consts';
 import { PropertyData } from '../../types';
 import styles from './Card.module.scss';
-import getRandomNumber from '../../lib/getRandomNumber';
 import convertDate from '../../lib/convertDate';
+
+import placehoderImage from '../../assets/images/placeholder.svg';
 
 interface CardProps {
   data: PropertyData;
@@ -18,11 +18,7 @@ export default class Card extends React.Component<CardProps> {
     return (
       <li className={styles.card}>
         <div className={styles.imageWrapper}>
-          <img
-            className={styles.image}
-            src={image || `${UNSPLASH_URL}&sig=${getRandomNumber(200)}`}
-            alt={title}
-          />
+          <img className={styles.image} src={image || placehoderImage} alt={title} />
         </div>
         <span className={styles.purpose}>{purpose}</span>
         <span className={styles.price}>${price}</span>

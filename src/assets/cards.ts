@@ -1,3 +1,4 @@
+import { UNSPLASH_URL } from '../consts';
 import { PropertyData } from '../types';
 
 export const CARDS: PropertyData[] = [
@@ -9,6 +10,7 @@ export const CARDS: PropertyData[] = [
     availableFrom: new Date('2023-01-02').getTime(),
     rooms: '3',
     purpose: 'sale',
+    image: `${UNSPLASH_URL}5`,
   },
   {
     id: 2,
@@ -18,6 +20,7 @@ export const CARDS: PropertyData[] = [
     availableFrom: new Date('2023-01-05').getTime(),
     rooms: '2',
     purpose: 'rent',
+    image: `${UNSPLASH_URL}20`,
   },
   {
     id: 3,
@@ -27,6 +30,7 @@ export const CARDS: PropertyData[] = [
     availableFrom: new Date('2023-01-10').getTime(),
     rooms: '4',
     purpose: 'sale',
+    image: `${UNSPLASH_URL}13`,
   },
   {
     id: 4,
@@ -36,6 +40,7 @@ export const CARDS: PropertyData[] = [
     availableFrom: new Date('2023-01-15').getTime(),
     rooms: '1',
     purpose: 'rent',
+    image: `${UNSPLASH_URL}6`,
   },
   {
     id: 5,
@@ -45,6 +50,7 @@ export const CARDS: PropertyData[] = [
     availableFrom: new Date('2023-02-01').getTime(),
     rooms: '2',
     purpose: 'sale',
+    image: `${UNSPLASH_URL}19`,
   },
   {
     id: 6,
@@ -54,6 +60,7 @@ export const CARDS: PropertyData[] = [
     availableFrom: new Date('2023-02-05').getTime(),
     rooms: '3',
     purpose: 'sale',
+    image: `${UNSPLASH_URL}50`,
   },
   {
     id: 7,
@@ -63,6 +70,7 @@ export const CARDS: PropertyData[] = [
     availableFrom: new Date('2023-02-10').getTime(),
     rooms: '5',
     purpose: 'rent',
+    image: `${UNSPLASH_URL}46`,
   },
   {
     id: 8,
@@ -72,5 +80,6 @@ export const CARDS: PropertyData[] = [
     availableFrom: new Date('2023-02-15').getTime(),
     rooms: '1',
     purpose: 'sale',
+    image: `${UNSPLASH_URL}38`,
   },
 ];
