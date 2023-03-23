@@ -32,6 +32,20 @@ a {
   color: inherit;
 }
 
+button {
+  padding: 0.5em 1em;
+  border-radius: 1em;
+  cursor: pointer;
+  border: none;
+  color: var(--clr-text-contrast);
+  background-color: var(--clr-primary);
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--clr-primary-dark);
+  }
+}
+
 ::-webkit-scrollbar {
   width: 4px;
   height: 4px;

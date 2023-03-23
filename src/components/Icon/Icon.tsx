@@ -4,6 +4,9 @@ import { IconType } from '../../types';
 import styles from './Icon.module.scss';
 
 import { ReactComponent as SearchIcon } from '../../assets/icons/search.svg';
+import { ReactComponent as HomeIcon } from '../../assets/icons/home.svg';
+import { ReactComponent as AboutIcon } from '../../assets/icons/about.svg';
+import { ReactComponent as AddIcon } from '../../assets/icons/add.svg';
 
 interface IconProps extends React.ComponentProps<'img'> {
   type: IconType;
@@ -11,6 +14,9 @@ interface IconProps extends React.ComponentProps<'img'> {
 
 const ICONS: { [key in IconType]: React.FC | undefined } = {
   search: SearchIcon,
+  home: HomeIcon,
+  about: AboutIcon,
+  add: AddIcon,
 };
 
 export default class Icon extends React.Component<IconProps> {

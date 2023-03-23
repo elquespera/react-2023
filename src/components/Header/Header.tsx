@@ -14,8 +14,8 @@ export default class Header extends React.Component<HeaderProps> {
         <h2>{this.props.title}</h2>
         <nav>
           <ul className={styles.links}>
-            {ROUTES.map(({ to, title, invisible }) =>
-              invisible ? null : <NavigationLink key={to} to={to} title={title} />
+            {ROUTES.map(({ to, title, icon, invisible }) =>
+              invisible ? null : <NavigationLink key={to} to={to} title={title} icon={icon} />
             )}
           </ul>
         </nav>

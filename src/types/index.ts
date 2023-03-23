@@ -1,3 +1,5 @@
+import React from 'react';
+
 export type EmptyProps = Record<string, never>;
 
 export interface LocalStorageData {
@@ -15,4 +17,12 @@ export interface PropertyData {
   image?: string;
 }
 
-export type IconType = 'search';
+export type IconType = 'search' | 'home' | 'about' | 'add';
+
+export interface RouteDetails {
+  to: string;
+  title: string;
+  page: typeof React.Component;
+  icon?: IconType;
+  invisible?: boolean;
+}
