@@ -9,14 +9,18 @@
   select {
     padding: 0.5em;
   }
+}
 
-  .error {
-    color: red;
-    font-size: 0.875em;
-  }
+.error,
+.required {
+  color: red;
+}
 
-  .radioLabel {
-    display: flex;
-    gap: 0.5em;
-  }
+.error {
+  font-size: 0.875em;
+}
+
+.radioLabel {
+  display: flex;
+  gap: 0.5em;
 }

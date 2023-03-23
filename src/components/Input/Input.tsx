@@ -1,9 +1,12 @@
+import clsx from 'clsx';
 import React from 'react';
 import styles from './Input.module.scss';
 
 interface InputProps {
   type?: 'text' | 'date' | 'number' | 'file' | 'select' | 'radio' | 'checkbox';
   id?: string;
+  className?: string;
+  required?: boolean;
   inputRef?: React.RefObject<HTMLInputElement>;
   selectRef?: React.RefObject<HTMLSelectElement>;
   options?: string[];
@@ -22,12 +25,29 @@ export default class Input extends React.Component<InputProps> {
   }
 
   render() {
-    const { type, id, value, label, error, errorMsg, options, inputRef, selectRef } = this.props;
+    const {
+      type,
+      id,
+      className,
+      required,
+      value,
+      label,
+      error,
+      errorMsg,
+      options,
+      inputRef,
+      selectRef,
+    } = this.props;
 
     return (
       <>
-        {labelBefore(type) && <label htmlFor={id}>{label}</label>}
-        <div className={styles.inputWrapper}>
+        {labelBefore(type) && (
+          <label htmlFor={id}>
+            {label}
+            {required && <span className={styles.required}>*</span>}
+          </label>
+        )}
+        <div className={clsx(className, styles.inputWrapper)}>
           {type === 'select' ? (
             <select ref={selectRef}>
               {options && options.map((option, index) => <option key={index}>{option}</option>)}

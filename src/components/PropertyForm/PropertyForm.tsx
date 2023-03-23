@@ -85,6 +85,7 @@ export default class PropertyForm extends React.Component<PropertyFormProps, Pro
         <div className={styles.table}>
           <Input
             id="property-title"
+            required
             inputRef={this.titleRef}
             label="Title"
             error={errors.title}
@@ -93,6 +94,7 @@ export default class PropertyForm extends React.Component<PropertyFormProps, Pro
 
           <Input
             id="property-address"
+            required
             inputRef={this.addressRef}
             label="Address"
             error={errors.address}
@@ -101,6 +103,7 @@ export default class PropertyForm extends React.Component<PropertyFormProps, Pro
 
           <Input
             id="property-price"
+            required
             type="number"
             inputRef={this.priceRef}
             label="Price"
@@ -111,6 +114,7 @@ export default class PropertyForm extends React.Component<PropertyFormProps, Pro
           <Input
             id="property-rooms"
             type="select"
+            required
             selectRef={this.roomsRef}
             label="Rooms"
             options={['', '1', '2', '3', '4', '5+']}
@@ -121,8 +125,9 @@ export default class PropertyForm extends React.Component<PropertyFormProps, Pro
           <Input
             id="property-available-from"
             type="date"
+            required
             inputRef={this.availableFromRef}
-            label="Available From"
+            label="Available from"
             error={errors.availableFrom}
             errorMsg="Please provide property availability"
           />
@@ -156,6 +161,7 @@ export default class PropertyForm extends React.Component<PropertyFormProps, Pro
 
         <Input
           type="checkbox"
+          className={styles.agree}
           inputRef={this.agreeToTermsRef}
           label="I agree to the Terms & Conditions"
           error={errors.agreeToTerms}
