@@ -1,5 +1,6 @@
 import React from 'react';
 import { ADDRESS_PATTERN, TITLE_PATTERN } from '../../consts';
+import checkInputError from '../../lib/checkInputError';
 import { PropertyData } from '../../types';
 import Input from '../Input/Input';
 import styles from './PropertyForm.module.scss';
@@ -40,25 +41,13 @@ export default class PropertyForm extends React.Component<PropertyFormProps, Pro
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  checkInputError(
-    ref: React.RefObject<HTMLInputElement | HTMLSelectElement>,
-    pattern?: RegExp | ((value: string) => boolean)
-  ): boolean {
-    const input = ref.current;
-    if (!input) return false;
-    const value = input.value;
-    if (pattern === undefined) return value === '';
-    if (typeof pattern === 'function') return pattern(value);
-    return pattern.test(input.value.trim()) === false;
-  }
-
   validateForm(): boolean {
     const errors: ValidationErrors = {
-      title: this.checkInputError(this.titleRef, TITLE_PATTERN),
-      address: this.checkInputError(this.addressRef, ADDRESS_PATTERN),
-      price: this.checkInputError(this.priceRef, (value) => value === '' || parseInt(value) <= 0),
-      rooms: this.checkInputError(this.roomsRef),
-      availableFrom: this.checkInputError(this.availableFromRef),
+      title: checkInputError(this.titleRef, TITLE_PATTERN),
+      address: checkInputError(this.addressRef, ADDRESS_PATTERN),
+      price: checkInputError(this.priceRef, (value) => value === '' || parseInt(value) <= 0),
+      rooms: checkInputError(this.roomsRef),
+      availableFrom: checkInputError(this.availableFromRef),
       sellOrRent: !this.sellRef.current?.checked && !this.rentRef.current?.checked,
       agreeToTerms: !this.agreeToTermsRef.current?.checked,
     };
