@@ -33,16 +33,24 @@ a {
 }
 
 button {
-  padding: 0.5em 1em;
-  border-radius: 1em;
   cursor: pointer;
   border: none;
-  color: var(--clr-text-contrast);
-  background-color: var(--clr-primary);
+  background-color: transparent;
+  color: currentColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  &:hover,
-  &:focus-visible {
-    background-color: var(--clr-primary-dark);
+  &.btn-filled {
+    padding: 0.5em 1em;
+    border-radius: 1em;
+    color: var(--clr-text-contrast);
+    background-color: var(--clr-primary);
+
+    &:hover,
+    &:focus-visible {
+      background-color: var(--clr-primary-dark);
+    }
   }
 }
 

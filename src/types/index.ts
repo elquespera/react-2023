@@ -17,7 +17,7 @@ export interface PropertyData {
   image?: string;
 }
 
-export type IconType = 'search' | 'home' | 'about' | 'add';
+export type IconType = 'search' | 'home' | 'about' | 'add' | 'close';
 
 export interface RouteDetails {
   to: string;

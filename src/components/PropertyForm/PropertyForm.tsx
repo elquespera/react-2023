@@ -1,8 +1,10 @@
+import clsx from 'clsx';
 import React from 'react';
 import { ADDRESS_PATTERN, TITLE_PATTERN } from '../../consts';
 import checkInputError from '../../lib/checkInputError';
 import { PropertyData } from '../../types';
 import Input from '../Input/Input';
+import SnackBar from '../SnackBar/SnackBar';
 import styles from './PropertyForm.module.scss';
 
 interface PropertyFormProps {
@@ -21,6 +23,7 @@ interface ValidationErrors {
 
 interface PropertyFormState {
   errors: ValidationErrors;
+  successMsg?: string;
 }
 
 export default class PropertyForm extends React.Component<PropertyFormProps, PropertyFormState> {
@@ -74,106 +77,110 @@ export default class PropertyForm extends React.Component<PropertyFormProps, Pro
           image,
         };
         this.props.onSubmit(data);
+        this.setState({ successMsg: 'Your property was added successfully!' });
       }
       this.formRef.current?.reset();
     }
   }
 
   render() {
-    const errors = this.state?.errors;
+    const { errors, successMsg } = this.state;
     return (
-      <form ref={this.formRef} className={styles.form} onSubmit={this.handleSubmit}>
-        <h3>Add new property</h3>
-        <div className={styles.table}>
-          <Input
-            id="property-title"
-            required
-            inputRef={this.titleRef}
-            label="Title"
-            error={errors.title}
-            errorMsg="Please provide property title (at least 3 characters)"
-          />
+      <>
+        <form ref={this.formRef} className={styles.form} onSubmit={this.handleSubmit}>
+          <h3>Add new property</h3>
+          <div className={styles.table}>
+            <Input
+              id="property-title"
+              required
+              inputRef={this.titleRef}
+              label="Title"
+              error={errors.title}
+              errorMsg="Please provide property title (at least 3 characters)"
+            />
 
-          <Input
-            id="property-address"
-            required
-            inputRef={this.addressRef}
-            label="Address"
-            error={errors.address}
-            errorMsg="Please provide property address (at least 10 characters)"
-          />
+            <Input
+              id="property-address"
+              required
+              inputRef={this.addressRef}
+              label="Address"
+              error={errors.address}
+              errorMsg="Please provide property address (at least 10 characters)"
+            />
 
-          <Input
-            id="property-price"
-            required
-            type="number"
-            inputRef={this.priceRef}
-            label="Price"
-            error={errors.price}
-            errorMsg="Please provide property price (must be a positive number)"
-          />
+            <Input
+              id="property-price"
+              required
+              type="number"
+              inputRef={this.priceRef}
+              label="Price"
+              error={errors.price}
+              errorMsg="Please provide property price (must be a positive number)"
+            />
 
-          <Input
-            id="property-rooms"
-            type="select"
-            required
-            selectRef={this.roomsRef}
-            label="Rooms"
-            options={['', '1', '2', '3', '4', '5+']}
-            error={errors.rooms}
-            errorMsg="Please select the number of rooms"
-          />
+            <Input
+              id="property-rooms"
+              type="select"
+              required
+              selectRef={this.roomsRef}
+              label="Rooms"
+              options={['', '1', '2', '3', '4', '5+']}
+              error={errors.rooms}
+              errorMsg="Please select the number of rooms"
+            />
 
-          <Input
-            id="property-available-from"
-            type="date"
-            required
-            inputRef={this.availableFromRef}
-            label="Available from"
-            error={errors.availableFrom}
-            errorMsg="Please provide property availability"
-          />
+            <Input
+              id="property-available-from"
+              type="date"
+              required
+              inputRef={this.availableFromRef}
+              label="Available from"
+              error={errors.availableFrom}
+              errorMsg="Please provide property availability"
+            />
 
-          <Input type="file" inputRef={this.imageRef} label="Image" />
+            <Input type="file" inputRef={this.imageRef} label="Image" />
 
-          <span />
+            <span />
 
-          <div className={styles.inputWrapper}>
-            <div className={styles.radioWrapper}>
-              <Input
-                id="sell-or-rent"
-                type="radio"
-                inputRef={this.sellRef}
-                label="Sell"
-                value="sell"
-              />
-              <Input
-                id="sell-or-rent"
-                type="radio"
-                inputRef={this.rentRef}
-                label="Rent"
-                value="rent"
-              />
+            <div className={styles.inputWrapper}>
+              <div className={styles.radioWrapper}>
+                <Input
+                  id="sell-or-rent"
+                  type="radio"
+                  inputRef={this.sellRef}
+                  label="Sell"
+                  value="sell"
+                />
+                <Input
+                  id="sell-or-rent"
+                  type="radio"
+                  inputRef={this.rentRef}
+                  label="Rent"
+                  value="rent"
+                />
+              </div>
+              {errors?.sellOrRent && (
+                <span className={styles.error}>Please select the purpose of listing </span>
+              )}
             </div>
-            {errors?.sellOrRent && (
-              <span className={styles.error}>Please select the purpose of listing </span>
-            )}
           </div>
-        </div>
 
-        <Input
-          type="checkbox"
-          className={styles.agree}
-          inputRef={this.agreeToTermsRef}
-          label="I agree to the Terms & Conditions"
-          error={errors.agreeToTerms}
-          errorMsg="You have to agree to T&C before adding the property"
-        />
+          <Input
+            type="checkbox"
+            className={styles.agree}
+            inputRef={this.agreeToTermsRef}
+            label="I agree to the Terms & Conditions"
+            error={errors.agreeToTerms}
+            errorMsg="You have to agree to T&C before adding the property"
+          />
 
-        <button className={styles.submit} type="submit">
-          Submit property
-        </button>
-      </form>
+          <button className={clsx('btn-filled', styles.submit)} type="submit">
+            Submit property
+          </button>
+        </form>
+        <SnackBar title={successMsg} onClose={() => this.setState({ successMsg: undefined })} />
+      </>
     );
   }
 }

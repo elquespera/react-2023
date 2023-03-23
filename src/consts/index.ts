@@ -3,3 +3,5 @@ export const UNSPLASH_URL = 'https://source.unsplash.com/random/400x600/?house&s
 
 export const TITLE_PATTERN = /.{3,}/;
 export const ADDRESS_PATTERN = /.{10,}/;
+
+export const SNACKBAR_TIMEOUT = 6000;
