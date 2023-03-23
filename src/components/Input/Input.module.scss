@@ -1,0 +1,26 @@
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+
+  input[type='text'],
+  input[type='number'],
+  input[type='date'],
+  select {
+    padding: 0.5em;
+  }
+}
+
+.error,
+.required {
+  color: red;
+}
+
+.error {
+  font-size: 0.875em;
+}
+
+.radioLabel {
+  display: flex;
+  gap: 0.5em;
+}

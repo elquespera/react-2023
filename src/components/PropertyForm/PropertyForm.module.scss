@@ -1,0 +1,68 @@
+@use '../../styles/variables' as vars;
+
+.form {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  max-width: 40rem;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: var(--clr-primary);
+    z-index: -1;
+    opacity: 0.15;
+  }
+
+  .table {
+    display: grid;
+    gap: 1rem;
+    width: 100%;
+    grid-template-columns: 1fr;
+    align-items: baseline;
+    justify-content: center;
+  }
+  .radioLabel {
+    display: flex;
+    gap: 0.5em;
+  }
+
+  .radioWrapper {
+    display: flex;
+    gap: 1em;
+  }
+
+  .inputWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+
+    .error {
+      color: red;
+      font-size: 0.875em;
+    }
+  }
+
+  .submit,
+  .agree {
+    align-self: end;
+  }
+
+  @media screen and (min-width: vars.$mobile-breakpoint) {
+    .table {
+      grid-template-columns: auto 1fr;
+      label {
+        text-align: end;
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  border: 2px solid var(--clr-primary);
+  border-radius: 2rem;
+
+  .icon {
+    font-size: 1.5em;
+    color: var(--clr-primary);
+  }
+
+  .input {
+    width: 100%;
+    font-size: 1.2rem;
+    border: 0;
+    outline-color: transparent;
+  }
+
+  &:focus-within {
+    border-color: var(--clr-primary-dark);
+
+    .icon {
+      color: var(--clr-primary-dark);
+    }
+  }
+}

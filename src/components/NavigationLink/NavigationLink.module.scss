@@ -1,0 +1,27 @@
+@use '../../styles/variables' as vars;
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.5em 0.8em;
+  border-radius: 1rem;
+
+  &.active {
+    color: var(--clr-text-contrast);
+    background-color: var(--clr-primary);
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: var(--clr-text-contrast);
+    background-color: var(--clr-primary-dark);
+  }
+
+  @media screen and (max-width: vars.$mobile-breakpoint) {
+    padding: 0.5em 0.5em;
+    .title {
+      display: none;
+    }
+  }
+}

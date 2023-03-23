@@ -1,0 +1,15 @@
+@use '../../styles/variables' as vars;
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: vars.$header-height;
+  padding: 1rem 2rem;
+
+  .links {
+    display: flex;
+    gap: 0.5em;
+  }
+}

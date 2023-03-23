@@ -1,0 +1,35 @@
+.wrapper {
+  position: fixed;
+  bottom: 2rem;
+  left: 1rem;
+  right: 1rem;
+  display: flex;
+  justify-content: center;
+  z-index: 999;
+
+  .content {
+    display: flex;
+    overflow: hidden;
+    color: var(--clr-text-contrast);
+    border-radius: 0.5em;
+    background-color: var(--clr-primary-dark);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 8px;
+    min-width: calc(min(100%, 20ch));
+
+    .close {
+      width: 2rem;
+      height: 100%;
+      flex-shrink: 0;
+
+      &:hover,
+      &:active {
+        background-color: var(--clr-primary);
+      }
+    }
+
+    .title {
+      padding: 0.5em 1em 0.5em 0.5em;
+      flex-grow: 1;
+    }
+  }
+}

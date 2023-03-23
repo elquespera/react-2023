@@ -1,0 +1,77 @@
+@use 'variables' as vars;
+
+body,
+html,
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto Flex', sans-serif;
+  overflow-y: auto;
+  overflow-y: overlay;
+}
+
+main {
+  margin: 0 auto;
+  max-width: vars.$app-width;
+  padding: 2rem;
+}
+
+ul,
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  color: currentColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.btn-filled {
+    padding: 0.5em 1em;
+    border-radius: 1em;
+    color: var(--clr-text-contrast);
+    background-color: var(--clr-primary);
+
+    &:hover,
+    &:focus-visible {
+      background-color: var(--clr-primary-dark);
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+:hover::-webkit-scrollbar-thumb {
+  background-color: #ccc7;
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #ccca;
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:active {
+  background-color: #ccc;
+  border-radius: 6px;
+}
