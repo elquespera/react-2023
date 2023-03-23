@@ -9,6 +9,8 @@ git clone https://github.com/elquespera/react-2023.git
 
 cd react-2023
 
+git checkout #current week's branch name
+
 npm install
 ```
 
