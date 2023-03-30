@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import { useCallback } from 'react';
 import styles from './Input.module.scss';
 import {
   FieldErrors,
@@ -44,12 +43,10 @@ export default function Input({
   errors,
   errorMsg,
 }: InputProps) {
-  const id = useCallback(() => crypto.randomUUID(), [])();
-
   return (
     <>
       {labelBefore(type) && (
-        <label htmlFor={id}>
+        <label htmlFor={name}>
           {label}
           {required && <span className={styles.required}>*</span>}
         </label>
@@ -72,7 +69,7 @@ export default function Input({
               return (
                 <input
                   type={'file'}
-                  id={id}
+                  id={name}
                   accept={'image/*'}
                   onChange={(e) => {
                     const file = e.target.files?.[0];
@@ -84,7 +81,7 @@ export default function Input({
             }}
           />
         ) : (
-          <input {...register(name, { required, pattern })} type={type || 'text'} />
+          <input {...register(name, { required, pattern })} id={name} type={type || 'text'} />
         )}
 
         {errors?.[name] && errorMsg && <span className={styles.error}>{errorMsg}</span>}
