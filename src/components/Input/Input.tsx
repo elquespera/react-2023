@@ -13,7 +13,7 @@ import { PropertyData } from '../../types';
 interface InputProps {
   name: FieldName<PropertyData>;
   label?: string;
-  register: UseFormRegister<PropertyData>;
+  register?: UseFormRegister<PropertyData>;
   control?: Control<PropertyData>;
   type?: 'text' | 'date' | 'number' | 'file' | 'select' | 'radio' | 'checkbox';
   options?: string[];
@@ -43,6 +43,8 @@ export default function Input({
   errors,
   errorMsg,
 }: InputProps) {
+  const registerProps = register ? register(name, { required, pattern }) : {};
+
   return (
     <>
       {labelBefore(type) && (
@@ -53,12 +55,12 @@ export default function Input({
       )}
       <div className={clsx(className, styles.inputWrapper)}>
         {type === 'select' ? (
-          <select {...register(name, { required })}>
+          <select {...registerProps}>
             {options && options.map((option, index) => <option key={index}>{option}</option>)}
           </select>
         ) : type === 'checkbox' || type === 'radio' ? (
           <label className={styles.radioLabel}>
-            <input type={type} {...register(name, { required })} value={value} />
+            <input type={type} {...registerProps} value={value} />
             {label}
           </label>
         ) : type === 'file' ? (
@@ -81,7 +83,7 @@ export default function Input({
             }}
           />
         ) : (
-          <input {...register(name, { required, pattern })} id={name} type={type || 'text'} />
+          <input {...registerProps} id={name} type={type || 'text'} />
         )}
 
         {errors?.[name] && errorMsg && <span className={styles.error}>{errorMsg}</span>}
