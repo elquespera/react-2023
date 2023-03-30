@@ -10,22 +10,13 @@ interface NavigationLinkProps {
   icon?: IconType;
 }
 
-export default class NavigationLink extends React.Component<NavigationLinkProps> {
-  constructor(props: NavigationLinkProps) {
-    super(props);
-  }
-  render() {
-    const { to, title, icon } = this.props;
-    return (
-      <li>
-        <NavLink
-          to={to}
-          className={({ isActive }) => `${styles.link} ${isActive && styles.active}`}
-        >
-          {icon && <Icon type={icon} />}
-          <span className={styles.title}>{title}</span>
-        </NavLink>
-      </li>
-    );
-  }
+export default function NavigationLink({ to, title, icon }: NavigationLinkProps) {
+  return (
+    <li>
+      <NavLink to={to} className={({ isActive }) => `${styles.link} ${isActive && styles.active}`}>
+        {icon && <Icon type={icon} />}
+        <span className={styles.title}>{title}</span>
+      </NavLink>
+    </li>
+  );
 }

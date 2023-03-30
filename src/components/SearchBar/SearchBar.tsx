@@ -1,44 +1,24 @@
-import React from 'react';
+import { useEffect, useRef } from 'react';
 import { getLocalStorage, setLocalStorage } from '../../lib/storage';
-import { EmptyProps } from '../../types';
 import Icon from '../Icon/Icon';
 import styles from './SearchBar.module.scss';
 
-interface SearchBarState {
-  inputValue: string;
-}
+export default function SearchBar() {
+  const inputRef = useRef<HTMLInputElement>(null);
 
-export default class SearchBar extends React.Component<EmptyProps, SearchBarState> {
-  constructor(props: EmptyProps) {
-    super(props);
-    this.state = { inputValue: '' };
-  }
-
-  componentDidMount() {
+  useEffect(() => {
     const { search } = getLocalStorage();
-    if (search) this.setState({ inputValue: search });
-  }
+    const input = inputRef.current;
 
-  componentWillUnmount() {
-    setLocalStorage({ search: this.state.inputValue });
-  }
+    if (search && input) input.value = search;
 
-  handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
-    this.setState({ inputValue: event.target.value });
-  }
+    return () => setLocalStorage({ search: input?.value });
+  }, [inputRef]);
 
-  render() {
-    return (
-      <label className={styles.wrapper}>
-        <Icon type="search" className={styles.icon} />
-        <input
-          type="text"
-          value={this.state.inputValue}
-          placeholder="Search"
-          onChange={this.handleInputChange.bind(this)}
-          className={styles.input}
-        />
-      </label>
-    );
-  }
+  return (
+    <label className={styles.wrapper}>
+      <Icon type="search" className={styles.icon} />
+      <input type="text" ref={inputRef} placeholder="Search" className={styles.input} />
+    </label>
+  );
 }
