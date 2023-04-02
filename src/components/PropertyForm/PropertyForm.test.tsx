@@ -4,7 +4,7 @@ import PropertyForm from './PropertyForm';
 
 describe('<PropertyForm> component', () => {
   test('Shoud render and have title', () => {
-    render(<PropertyForm />);
+    render(<PropertyForm onSubmit={() => {}} />);
     expect(screen.getByText('Title')).toBeDefined();
   });
 });

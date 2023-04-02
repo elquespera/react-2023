@@ -7,19 +7,17 @@ interface HeaderProps {
   title?: string;
 }
 
-export default class Header extends React.Component<HeaderProps> {
-  render() {
-    return (
-      <header className={styles.header}>
-        <h2>{this.props.title}</h2>
-        <nav>
-          <ul className={styles.links}>
-            {ROUTES.map(({ to, title, icon, invisible }) =>
-              invisible ? null : <NavigationLink key={to} to={to} title={title} icon={icon} />
-            )}
-          </ul>
-        </nav>
-      </header>
-    );
-  }
+export default function Header({ title }: HeaderProps) {
+  return (
+    <header className={styles.header}>
+      <h2>{title}</h2>
+      <nav>
+        <ul className={styles.links}>
+          {ROUTES.map(({ to, title, icon, invisible }) =>
+            invisible ? null : <NavigationLink key={to} to={to} title={title} icon={icon} />
+          )}
+        </ul>
+      </nav>
+    </header>
+  );
 }

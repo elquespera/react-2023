@@ -15,6 +15,7 @@ export interface PropertyData {
   availableFrom: number;
   purpose: 'sale' | 'rent';
   image?: string;
+  agree?: boolean;
 }
 
 export type IconType = 'search' | 'home' | 'about' | 'add' | 'close';
@@ -22,6 +23,7 @@ export type IconType = 'search' | 'home' | 'about' | 'add' | 'close';
 export interface RouteDetails {
   to: string;
   title: string;
+  testId?: string;
   page: typeof React.Component;
   icon?: IconType;
   invisible?: boolean;

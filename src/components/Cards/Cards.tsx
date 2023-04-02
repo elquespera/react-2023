@@ -5,21 +5,14 @@ import styles from './Cards.module.scss';
 
 interface CardsProps {
   data: PropertyData[];
-  count?: number;
 }
 
-export default class Cards extends React.Component<CardsProps> {
-  constructor(props: CardsProps) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <ul className={styles.cards}>
-        {this.props.data.map((data) => (
-          <Card key={data.id} data={data} />
-        ))}
-      </ul>
-    );
-  }
+export default function Cards({ data }: CardsProps) {
+  return (
+    <ul className={styles.cards}>
+      {data.map((data) => (
+        <Card key={data.id} data={data} />
+      ))}
+    </ul>
+  );
 }
