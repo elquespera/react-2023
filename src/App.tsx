@@ -6,8 +6,12 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {ROUTES.map(({ to, title, page: Page }) => (
-          <Route key={to} path={to} element={<Layout title={title} page={<Page />} />} />
+        {ROUTES.map(({ to, title, testId, page: Page }) => (
+          <Route
+            key={to}
+            path={to}
+            element={<Layout title={title} page={<Page />} testId={testId} />}
+          />
         ))}
       </Routes>
     </BrowserRouter>
