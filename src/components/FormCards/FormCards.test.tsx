@@ -1,10 +1,10 @@
 import { describe, expect, test } from 'vitest';
 import { render } from '@testing-library/react';
 import FormCards from './FormCards';
-import { MOCK_CARDS } from '../../assets/mocks';
+import { MOCK_PROPERTIES } from '../../assets/mocks';
 
 describe('<FormCards> component', () => {
-  const data = MOCK_CARDS;
+  const data = MOCK_PROPERTIES;
 
   test('Shoud render', () => {
     render(<FormCards data={data} />);
