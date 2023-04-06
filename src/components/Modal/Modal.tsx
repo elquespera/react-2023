@@ -1,4 +1,4 @@
-import React, { ReactNode, useRef } from 'react';
+import React, { ReactNode, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import styles from './Modal.module.scss';
 import Button from '../Button/Button';
@@ -21,9 +21,23 @@ export default function Modal({ open, title, children, onClose }: ModalProps) {
     if (e.target === wrapperRef.current) handleClose();
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Escape') handleClose();
+  };
+
+  useEffect(() => {
+    wrapperRef.current?.focus();
+  }, [wrapperRef.current, open]);
+
   if (!open) return null;
   return createPortal(
-    <div className={styles.wrapper} ref={wrapperRef} onClick={handleWrapperClick}>
+    <div
+      className={styles.wrapper}
+      ref={wrapperRef}
+      tabIndex={-1}
+      onClick={handleWrapperClick}
+      onKeyDown={handleKeyDown}
+    >
       <div className={styles.modal}>
         <h2 className={styles.title}>
           {title} <Button icon="close" className={styles.close} onClick={handleClose} />
