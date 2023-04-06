@@ -1,6 +1,6 @@
 import React from 'react';
 import { CARDS } from '../assets/cards';
-import Cards from '../components/Cards/Cards';
+import Cards from '../components/FormCards/FormCards';
 import SearchBar from '../components/SearchBar/SearchBar';
 
 export default class Main extends React.Component {
@@ -11,7 +11,7 @@ export default class Main extends React.Component {
         data-testid="home-page"
       >
         <SearchBar />
-        <Cards data={CARDS} />
+        {/* <Cards data={CARDS} /> */}
       </div>
     );
   }

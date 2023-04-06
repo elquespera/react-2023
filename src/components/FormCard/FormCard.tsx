@@ -1,15 +1,14 @@
-import React from 'react';
 import { PropertyData } from '../../types';
-import styles from './Card.module.scss';
+import styles from './FormCard.module.scss';
 import convertDate from '../../lib/convertDate';
 
 import placehoderImage from '../../assets/images/placeholder.svg';
 
-interface CardProps {
+interface FormCardProps {
   data: PropertyData;
 }
 
-export default function Card({ data }: CardProps) {
+export default function FormCard({ data }: FormCardProps) {
   const { title, address, price, availableFrom, rooms, purpose, image } = data;
   return (
     <li className={styles.card}>

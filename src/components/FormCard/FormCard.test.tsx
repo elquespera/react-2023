@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import Card from './Card';
+import Card from './FormCard';
 import { MOCK_CARDS } from '../../assets/mocks';
 
 describe('<Card> component', () => {
