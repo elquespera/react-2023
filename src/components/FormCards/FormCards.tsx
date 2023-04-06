@@ -8,7 +8,7 @@ interface FormCardsProps {
 
 export default function FormCards({ data }: FormCardsProps) {
   return (
-    <ul className={styles.FormCards}>
+    <ul className={styles.cards}>
       {data.map((data) => (
         <FormCard key={data.id} data={data} />
       ))}
