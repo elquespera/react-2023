@@ -12,7 +12,7 @@ export default function CharacterCard({ data }: CharacterCardProps) {
       <div className={styles.imageWrapper}>
         <img className={styles.image} src={image} alt={name} />
       </div>
-      <span className={styles.purpose}>{name}</span>
+      <div className={styles.name}>{name}</div>
     </li>
   );
 }
