@@ -6,25 +6,31 @@ import CharacterCards from '../components/CharacterCards/CharacterCards';
 export default function Main() {
   const [characters, setCharacters] = useState<Character[]>([]);
 
-  useEffect(() => {
-    const loadCharacters = async () => {
-      const result = await fetchAllCharacters();
-      setCharacters(result.results);
-    };
+  const handleSubmit = (value: string) => {
+    findCharacters(value);
+  };
 
-    loadCharacters();
+  const findCharacters = async (query?: string) => {
+    const result = await fetchAllCharacters(query);
+    setCharacters(result?.results || []);
+  };
+
+  useEffect(() => {
+    findCharacters();
   }, []);
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }} data-testid="home-page">
-      <SearchBar />
+      <SearchBar onSubmit={handleSubmit} />
       <CharacterCards data={characters} />
     </div>
   );
 }
 
-async function fetchAllCharacters() {
-  const response = await fetch('https://rickandmortyapi.com/api/character');
+async function fetchAllCharacters(query?: string) {
+  let url = 'https://rickandmortyapi.com/api/character';
+  if (query) url += `?name=${query}`;
+  const response = await fetch(url);
   const data: AllCharacters = await response.json();
 
   return data;

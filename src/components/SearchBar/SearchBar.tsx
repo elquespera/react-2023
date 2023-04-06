@@ -33,7 +33,7 @@ export default function SearchBar({ onSubmit }: SearchBarProps) {
       <div className={styles.wrapper}>
         <label className={styles.inputWrapper}>
           <Icon type="search" className={styles.icon} />
-          <input type="text" ref={inputRef} placeholder="Search" className={styles.input} />
+          <input type="text" ref={inputRef} placeholder="Search by name" className={styles.input} />
         </label>
         <button type="submit" className={styles.submit} title="Search">
           <Icon type="search" />
