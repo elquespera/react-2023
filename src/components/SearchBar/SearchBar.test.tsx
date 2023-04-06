@@ -5,6 +5,6 @@ import SearchBar from './SearchBar';
 describe('<SearchBar> component', () => {
   test('Shoud render', () => {
     render(<SearchBar />);
-    expect(screen.getByPlaceholderText('Search')).toBeDefined();
+    expect(screen.getByPlaceholderText('Search by name')).toBeDefined();
   });
 });
