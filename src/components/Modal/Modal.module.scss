@@ -8,13 +8,14 @@
   outline-color: transparent;
 
   .modal {
-    min-width: 320px;
+    margin: 1rem;
+    min-width: 220px;
     min-height: 240px;
     padding: 1rem;
     border-radius: 0.5rem;
     transform: translateY(-50vh);
     opacity: 0;
-    animation: modal-appear 0.5s forwards;
+    animation: modal-appear 0.3s forwards;
 
     background-color: var(--clr-background);
     box-shadow: 2px 2px 2rem var(--clr-shadow);
@@ -30,6 +31,10 @@
       .close {
         font-size: 1.2rem;
       }
+    }
+
+    .content {
+      overflow: auto;
     }
   }
 }
