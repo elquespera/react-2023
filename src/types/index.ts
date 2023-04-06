@@ -22,7 +22,7 @@ export interface RouteDetails {
   to: string;
   title: string;
   testId?: string;
-  page: typeof React.Component;
+  page: () => JSX.Element;
   icon?: IconType;
   invisible?: boolean;
 }
