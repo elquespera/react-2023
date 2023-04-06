@@ -12,9 +12,9 @@
     min-height: 240px;
     padding: 1rem;
     border-radius: 0.5rem;
-    transform: scale(0);
+    transform: translateY(-50vh);
     opacity: 0;
-    animation: modal-appear 0.3s forwards;
+    animation: modal-appear 0.5s forwards;
 
     background-color: var(--clr-background);
     box-shadow: 2px 2px 2rem var(--clr-shadow);
@@ -35,8 +35,11 @@
 }
 
 @keyframes modal-appear {
+  80% {
+    opacity: 0.8;
+  }
   100% {
-    transform: scale(1);
+    transform: translateY(0);
     opacity: 1;
   }
 }

@@ -27,24 +27,25 @@ export default function Modal({ open, title, children, onClose }: ModalProps) {
 
   useEffect(() => {
     wrapperRef.current?.focus();
-  }, [wrapperRef.current, open]);
+  }, [open]);
 
-  if (!open) return null;
-  return createPortal(
-    <div
-      className={styles.wrapper}
-      ref={wrapperRef}
-      tabIndex={-1}
-      onClick={handleWrapperClick}
-      onKeyDown={handleKeyDown}
-    >
-      <div className={styles.modal}>
-        <h2 className={styles.title}>
-          {title} <Button icon="close" className={styles.close} onClick={handleClose} />
-        </h2>
-        <div className={styles.content}>{children}</div>
-      </div>
-    </div>,
-    document.body
-  );
+  return open
+    ? createPortal(
+        <div
+          className={styles.wrapper}
+          ref={wrapperRef}
+          tabIndex={-1}
+          onClick={handleWrapperClick}
+          onKeyDown={handleKeyDown}
+        >
+          <div className={styles.modal}>
+            <h2 className={styles.title}>
+              {title} <Button icon="close" className={styles.close} onClick={handleClose} />
+            </h2>
+            <div className={styles.content}>{children}</div>
+          </div>
+        </div>,
+        document.body
+      )
+    : null;
 }
