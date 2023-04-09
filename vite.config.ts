@@ -8,9 +8,14 @@ import svgr from 'vite-plugin-svgr';
 export default defineConfig({
   plugins: [react(), svgr()],
   test: {
+    setupFiles: './src/vitest.setup.ts',
     globals: true,
     environment: 'jsdom',
-    include: ['./src/components/**/*.test.tsx'],
+    include: [
+      './src/components/**/*.test.tsx',
+      './src/routes/**/*.test.tsx',
+      './src/lib/**/*.test.tsx',
+    ],
     coverage: {
       reportsDirectory: '.coverage',
       provider: 'c8',

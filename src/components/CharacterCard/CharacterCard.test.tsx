@@ -4,17 +4,17 @@ import Card from './CharacterCard';
 import { MOCK_CHARACTERS } from '../../assets/mocks';
 
 describe('<Card> component', () => {
-  const cardData = MOCK_CHARACTERS[0];
+  const data = MOCK_CHARACTERS[0];
 
   test('Shoud have name', () => {
-    render(<Card data={cardData} />);
-    expect(screen.getByText(cardData.name)).toBeDefined();
+    render(<Card id={data.id} name={data.name} image={data.image} />);
+    expect(screen.getByText(data.name)).toBeDefined();
   });
 
   test('Shoud open modal on Click', () => {
-    render(<Card data={cardData} />);
-    const card = screen.getByText(cardData.name);
+    render(<Card id={data.id} name={data.name} image={data.image} />);
+    const card = screen.getByText(data.name);
     fireEvent.click(card);
-    expect(screen.findByText(cardData.species));
+    expect(screen.findByText(data.species));
   });
 });

@@ -1,13 +1,11 @@
-import { describe, expect, test, vi } from 'vitest';
+import { describe, expect, test } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import Main from './Main';
-
-global.fetch = vi.fn();
 
 describe('<Main> component', () => {
   const testId = 'home-page';
 
-  test('Shoud render Main component', () => {
+  test('Shoud render Main component', async () => {
     render(<Main />);
     expect(screen.getByTestId(testId)).toBeDefined();
   });
