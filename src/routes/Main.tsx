@@ -4,6 +4,7 @@ import { Character } from '../types';
 import CharacterCards from '../components/CharacterCards/CharacterCards';
 import Loader from '../components/Loader/Loader';
 import { fetchAllCharacters } from '../lib/fetchCharacters';
+import { getLocalStorage } from '../lib/storage';
 
 export default function Main() {
   const [characters, setCharacters] = useState<Character[]>([]);
@@ -24,7 +25,8 @@ export default function Main() {
   };
 
   useEffect(() => {
-    findCharacters();
+    const { search } = getLocalStorage();
+    findCharacters(search);
   }, []);
 
   return (
