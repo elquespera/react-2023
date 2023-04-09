@@ -7,7 +7,7 @@ interface LoaderProps {
 
 export default function Loader({ visible }: LoaderProps) {
   return (
-    <div className={clsx(styles.wrapper, visible && styles.visible)}>
+    <div className={clsx(styles.wrapper, visible && styles.visible)} data-testid="loader">
       <div className={styles.loader} />
     </div>
   );

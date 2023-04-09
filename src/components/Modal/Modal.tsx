@@ -35,12 +35,19 @@ export default function Modal({ open, title, children, onClose }: ModalProps) {
           className={styles.wrapper}
           ref={wrapperRef}
           tabIndex={-1}
+          data-testid="modal-portal"
           onClick={handleWrapperClick}
           onKeyDown={handleKeyDown}
         >
           <div className={styles.modal}>
             <h2 className={styles.title}>
-              {title} <Button icon="close" className={styles.close} onClick={handleClose} />
+              {title}{' '}
+              <Button
+                icon="close"
+                className={styles.close}
+                onClick={handleClose}
+                data-testid="close-button"
+              />
             </h2>
             <div className={styles.content}>{children}</div>
           </div>

@@ -29,7 +29,7 @@ export default function SearchBar({ onSubmit }: SearchBarProps) {
   }, [inputRef]);
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} data-testid="search-bar-form">
       <div className={styles.wrapper}>
         <label className={styles.inputWrapper}>
           <Icon type="search" className={styles.icon} />
