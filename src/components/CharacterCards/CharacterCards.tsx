@@ -9,8 +9,8 @@ interface CharacterCardsProps {
 export default function CharacterCards({ data }: CharacterCardsProps) {
   return (
     <ul className={styles.cards}>
-      {data.map((data) => (
-        <CharacterCard key={data.id} data={data} />
+      {data.map(({ id, name, image }) => (
+        <CharacterCard key={id} id={id} name={name} image={image} />
       ))}
     </ul>
   );

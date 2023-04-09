@@ -2,6 +2,7 @@ import { describe, expect, test } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { ROUTES } from '.';
 import Layout from './Layout';
+import AboutUs from './AboutUs';
 
 describe('<Input> component', () => {
   test('Shoud render Home Page', () => {

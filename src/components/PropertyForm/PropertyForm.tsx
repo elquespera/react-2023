@@ -124,7 +124,11 @@ export default function PropertyForm({ onSubmit }: PropertyFormProps) {
           errorMsg="You have to agree to T&C before adding the property"
         />
 
-        <button className={clsx('btn-filled', styles.submit)} type="submit">
+        <button
+          className={clsx('btn-filled', styles.submit)}
+          type="submit"
+          data-testid="submit-btn"
+        >
           Submit property
         </button>
       </form>

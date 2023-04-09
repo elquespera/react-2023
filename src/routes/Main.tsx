@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import SearchBar from '../components/SearchBar/SearchBar';
-import { AllCharacters, Character } from '../types';
+import { Character } from '../types';
 import CharacterCards from '../components/CharacterCards/CharacterCards';
 import Loader from '../components/Loader/Loader';
+import { fetchAllCharacters } from '../lib/fetchCharacters';
 
 export default function Main() {
   const [characters, setCharacters] = useState<Character[]>([]);
@@ -33,13 +34,4 @@ export default function Main() {
       <CharacterCards data={characters} />
     </div>
   );
-}
-
-async function fetchAllCharacters(query?: string) {
-  let url = 'https://rickandmortyapi.com/api/character';
-  if (query) url += `?name=${query}`;
-  const response = await fetch(url);
-  const data: AllCharacters = await response.json();
-
-  return data;
 }
