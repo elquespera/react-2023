@@ -23,6 +23,7 @@ export default function Main() {
       setCharacters(result?.results || []);
       setErrorMsg(undefined);
     } catch {
+      setCharacters([]);
       setErrorMsg('No characters were found');
     } finally {
       setIsLoading(false);
