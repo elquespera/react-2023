@@ -1,12 +1,10 @@
-import { PropertyData } from '../../types';
+import { useAppSelector } from '../../store/hooks';
+import { selectSubmissions } from '../../store/submissions';
 import FormCard from '../FormCard/FormCard';
 import styles from './FormCards.module.scss';
 
-interface FormCardsProps {
-  data: PropertyData[];
-}
-
-export default function FormCards({ data }: FormCardsProps) {
+export default function FormCards() {
+  const data = useAppSelector(selectSubmissions);
   return (
     <ul className={styles.cards}>
       {data.map((data) => (
