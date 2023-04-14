@@ -1,14 +1,15 @@
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
-import { MOCK_CHARACTERS } from './assets/mocks';
+import { MOCK_PROPERTIES } from './assets/mocks';
 import { afterAll, afterEach, beforeAll } from 'vitest';
+import { BASE_API_URL } from './consts';
 
 const restHandlers = [
-  rest.get('https://rickandmortyapi.com/api/character', (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(MOCK_CHARACTERS));
+  rest.get(BASE_API_URL, (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(MOCK_PROPERTIES));
   }),
-  rest.get('https://rickandmortyapi.com/api/character/1', (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(MOCK_CHARACTERS[0]));
+  rest.get(`${BASE_API_URL}/1`, (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(MOCK_PROPERTIES[0]));
   }),
 ];
 

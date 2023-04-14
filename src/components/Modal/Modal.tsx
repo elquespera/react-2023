@@ -41,7 +41,7 @@ export default function Modal({ open, title, children, onClose }: ModalProps) {
         >
           <div className={styles.modal}>
             <h2 className={styles.title}>
-              {title}{' '}
+              {title}
               <Button
                 icon="close"
                 className={styles.close}
