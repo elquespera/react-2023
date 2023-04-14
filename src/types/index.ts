@@ -1,7 +1,3 @@
-import React from 'react';
-
-export type EmptyProps = Record<string, never>;
-
 export interface LocalStorageData {
   search?: string;
 }
@@ -24,7 +20,37 @@ export interface RouteDetails {
   to: string;
   title: string;
   testId?: string;
-  page: typeof React.Component;
+  page: () => JSX.Element;
   icon?: IconType;
   invisible?: boolean;
+}
+
+export interface Character {
+  id: number;
+  name: string;
+  status: string;
+  species: string;
+  type: string | null;
+  gender: string;
+  origin: {
+    name: string;
+    url: string;
+  };
+  location: {
+    name: string;
+    url: string;
+  };
+  image: string;
+  episode: string[];
+  url: string;
+  created: string;
+}
+
+export interface AllCharacters {
+  info: {
+    count: number;
+    pages: number;
+  };
+
+  results: Character[];
 }

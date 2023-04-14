@@ -1,17 +1,16 @@
-import React from 'react';
 import { PropertyData } from '../../types';
 import Card from '../Card/Card';
 import styles from './Cards.module.scss';
 
-interface CardsProps {
+interface CharacterCardsProps {
   data: PropertyData[];
 }
 
-export default function Cards({ data }: CardsProps) {
+export default function CharacterCards({ data }: CharacterCardsProps) {
   return (
     <ul className={styles.cards}>
-      {data.map((data) => (
-        <Card key={data.id} data={data} />
+      {data.map(({ id, title, image }) => (
+        <Card key={id} id={id} title={title} image={image} />
       ))}
     </ul>
   );

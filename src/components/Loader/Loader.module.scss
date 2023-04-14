@@ -1,0 +1,30 @@
+.wrapper {
+  align-self: center;
+  transform: scale(0);
+  transition: transform 0.3s;
+
+  &.visible {
+    transform: scale(1);
+  }
+
+  .loader {
+    --size: 2rem;
+    width: var(--size);
+    height: var(--size);
+    border: 3px solid var(--clr-primary);
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 0.8s linear infinite;
+  }
+
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}

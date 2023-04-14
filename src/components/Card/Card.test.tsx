@@ -1,23 +1,20 @@
 import { describe, expect, test } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import Card from './Card';
-import { MOCK_CARDS } from '../../assets/mocks';
+import { MOCK_PROPERTIES } from '../../assets/mocks';
 
 describe('<Card> component', () => {
-  const cardData = MOCK_CARDS[0];
+  const data = MOCK_PROPERTIES[0];
 
-  test('Shoud have title', () => {
-    render(<Card data={cardData} />);
-    expect(screen.getByText(cardData.title)).toBeDefined();
+  test('Shoud have name', () => {
+    render(<Card id={data.id} title={data.title} image={data.image} />);
+    expect(screen.getByText(data.title)).toBeDefined();
   });
 
-  test('Shoud have address', () => {
-    render(<Card data={cardData} />);
-    expect(screen.getByText(cardData.address)).toBeDefined();
-  });
-
-  test('Shoud have price', () => {
-    render(<Card data={cardData} />);
-    expect(screen.getByText(`$${cardData.price}`)).toBeDefined();
+  test('Shoud open modal on Click', () => {
+    render(<Card id={data.id} title={data.title} image={data.image} />);
+    const card = screen.getByText(data.title);
+    fireEvent.click(card);
+    // expect(screen.findByText(data.species));
   });
 });

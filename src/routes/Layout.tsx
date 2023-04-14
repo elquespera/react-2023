@@ -7,13 +7,11 @@ interface LayoutProps {
   page?: React.ReactNode;
 }
 
-export default class Layout extends React.Component<LayoutProps> {
-  render() {
-    return (
-      <>
-        <Header title={this.props.title} />
-        <main data-testid={this.props.testId}>{this.props.page}</main>
-      </>
-    );
-  }
+export default function Layout({ title, testId, page }: LayoutProps) {
+  return (
+    <>
+      <Header title={title} />
+      <main data-testid={testId}>{page}</main>
+    </>
+  );
 }

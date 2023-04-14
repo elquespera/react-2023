@@ -1,0 +1,50 @@
+.wrapper {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--clr-backdrop);
+  outline-color: transparent;
+
+  .modal {
+    margin: 1rem;
+    min-width: 220px;
+    min-height: 240px;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    transform: translateY(-50vh);
+    opacity: 0;
+    animation: modal-appear 0.3s forwards;
+
+    background-color: var(--clr-background);
+    box-shadow: 2px 2px 2rem var(--clr-shadow);
+
+    .title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      color: var(--clr-primary);
+      margin-bottom: 0.5em;
+
+      .close {
+        font-size: 1.2rem;
+      }
+    }
+
+    .content {
+      overflow: auto;
+    }
+  }
+}
+
+@keyframes modal-appear {
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

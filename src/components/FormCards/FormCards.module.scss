@@ -1,7 +1,4 @@
 .cards {
-  --card-width: 200px;
-  --card-height: 180px;
-
   display: grid;
   gap: 2rem;
   grid-template-columns: repeat(auto-fit, var(--card-width));

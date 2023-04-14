@@ -1,6 +1,6 @@
 import { PropertyData } from '../types';
 
-export const MOCK_CARDS: PropertyData[] = [
+export const MOCK_PROPERTIES: PropertyData[] = [
   {
     id: 1,
     price: 250000,

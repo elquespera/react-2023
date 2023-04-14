@@ -1,29 +1,48 @@
-import React from 'react';
-import { PropertyData } from '../../types';
+import { useEffect, useState } from 'react';
+import Modal from '../Modal/Modal';
 import styles from './Card.module.scss';
-import convertDate from '../../lib/convertDate';
-
-import placehoderImage from '../../assets/images/placeholder.svg';
+import { PropertyData } from '../../types';
+import { fetchProperty } from '../../lib/fetchProperties';
+import PropertyInfo from '../PropertyInfo/PropertyInfo';
+import Loader from '../Loader/Loader';
 
 interface CardProps {
-  data: PropertyData;
+  id?: string | number;
+  title?: string;
+  image?: string;
 }
 
-export default function Card({ data }: CardProps) {
-  const { title, address, price, availableFrom, rooms, purpose, image } = data;
+export default function CharacterCard({ id, title, image }: CardProps) {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [property, setProperty] = useState<PropertyData>();
+
+  useEffect(() => {
+    const loadProperty = async () => {
+      setProperty(undefined);
+      if (id) {
+        const result = await fetchProperty(id);
+        setProperty(result);
+      } else {
+        setProperty(undefined);
+      }
+    };
+
+    if (modalOpen) {
+      loadProperty();
+    }
+  }, [modalOpen, id]);
+
   return (
-    <li className={styles.card}>
-      <div className={styles.imageWrapper}>
-        <img className={styles.image} src={image || placehoderImage} alt={title} />
-      </div>
-      <span className={styles.purpose}>{purpose}</span>
-      <span className={styles.price}>${price}</span>
-      <div className={styles.body}>
-        <h3 className={styles.title}>{title}</h3>
-        <span>{address}</span>
-        <span>{`Rooms: ${rooms}`}</span>
-        <span className={styles.date}>{`Available from ${convertDate(availableFrom)}`}</span>
-      </div>
-    </li>
+    <>
+      <li className={styles.card} onClick={() => setModalOpen(true)}>
+        <div className={styles.imageWrapper}>
+          <img className={styles.image} src={image} alt={title} />
+        </div>
+        <div className={styles.title}>{title}</div>
+      </li>
+      <Modal open={modalOpen} title={title} onClose={() => setModalOpen(false)}>
+        {property ? <PropertyInfo data={property} /> : <Loader visible />}
+      </Modal>
+    </>
   );
 }
