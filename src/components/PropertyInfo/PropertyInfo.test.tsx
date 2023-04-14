@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import { render, screen, waitForElementToBeRemoved } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { MOCK_PROPERTIES } from '../../assets/mocks';
 import PropertyInfo from './PropertyInfo';
 
