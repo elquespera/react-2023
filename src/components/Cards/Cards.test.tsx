@@ -1,19 +1,19 @@
 import { describe, expect, test } from 'vitest';
 import { render } from '@testing-library/react';
-import CharacterCards from './Cards';
-import { MOCK_CHARACTERS } from '../../assets/mocks';
+import Cards from './Cards';
+import { MOCK_PROPERTIES } from '../../assets/mocks';
 
-describe('<CharacterCards> component', () => {
-  const data = MOCK_CHARACTERS;
+describe('<Cards> component', () => {
+  const data = MOCK_PROPERTIES;
   test('Shoud render', () => {
-    render(<CharacterCards data={data} />);
+    render(<Cards data={data} />);
   });
   test('Shoud render UL list', () => {
-    const { container } = render(<CharacterCards data={data} />);
+    const { container } = render(<Cards data={data} />);
     expect(container.firstChild?.nodeName.toUpperCase()).toEqual('UL');
   });
   test('Shoud have 2 cards', () => {
-    const { container } = render(<CharacterCards data={data} />);
+    const { container } = render(<Cards data={data} />);
     expect(container.firstChild?.childNodes.length).toEqual(data.length);
   });
 });
