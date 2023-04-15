@@ -7,7 +7,7 @@ const [data] = MOCK_PROPERTIES;
 
 describe('<PropertyInfo> component', () => {
   test('Shoud have title', () => {
-    render(<PropertyInfo data={data} />);
+    render(<PropertyInfo id={data.id} />);
     expect(screen.getByText(`Price: $${data.price}`)).toBeDefined();
   });
 });
