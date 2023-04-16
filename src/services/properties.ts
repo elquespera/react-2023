@@ -6,6 +6,9 @@ export const propertiesApi = createApi({
   reducerPath: 'properties',
   baseQuery: fetchBaseQuery({ baseUrl: BASE_API_URL }),
   endpoints: (builder) => ({
+    getAllProperties: builder.query<PropertyData[], string>({
+      query: (q) => `?q=${q}`,
+    }),
     getPropertyById: builder.query<PropertyData, string | number>({
       query: (id) => `/${id}`,
     }),
@@ -14,4 +17,4 @@ export const propertiesApi = createApi({
 
 export const { reducer: propertiesReducer } = propertiesApi;
 
-export const { useGetPropertyByIdQuery } = propertiesApi;
+export const { useGetAllPropertiesQuery, useGetPropertyByIdQuery } = propertiesApi;

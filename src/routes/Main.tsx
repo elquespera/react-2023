@@ -3,37 +3,26 @@ import CharacterCards from '../components/Cards/Cards';
 import Loader from '../components/Loader/Loader';
 import SearchBar from '../components/SearchBar/SearchBar';
 import SnackBar from '../components/SnackBar/SnackBar';
-import { fetchAllProperties } from '../lib/fetchProperties';
-import { getLocalStorage } from '../lib/storage';
-import { PropertyData } from '../types';
+import { useGetAllPropertiesQuery } from '../services/properties';
+import { useAppSelector } from '../store/hooks';
+import { selectSearchQuery } from '../store/search';
 
 export default function Main() {
-  const [properties, setProperties] = useState<PropertyData[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string>();
-
-  const handleSubmit = (value: string) => {
-    findProperties(value);
-  };
-
-  const findProperties = async (query?: string) => {
-    try {
-      setIsLoading(true);
-      const result = await fetchAllProperties(query);
-      setProperties(result || []);
-      setErrorMsg(undefined);
-    } catch {
-      setProperties([]);
-      setErrorMsg('No properties were found');
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const { query } = useAppSelector(selectSearchQuery);
+  const { data: properties, isFetching, error } = useGetAllPropertiesQuery(query);
 
   useEffect(() => {
-    const { search } = getLocalStorage();
-    findProperties(search);
-  }, []);
+    if (error) {
+      setErrorMsg('There was an error while fetching properties');
+    } else {
+      if (!isFetching && properties?.length === 0) {
+        setErrorMsg('No properties were found for your request');
+      } else {
+        setErrorMsg(undefined);
+      }
+    }
+  }, [error, isFetching, properties]);
 
   return (
     <>
@@ -41,9 +30,9 @@ export default function Main() {
         style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}
         data-testid="home-page"
       >
-        <SearchBar onSubmit={handleSubmit} />
-        <Loader visible={isLoading} />
-        <CharacterCards data={properties} />
+        <SearchBar />
+        <Loader visible={isFetching} />
+        {properties && <CharacterCards data={properties} />}
       </div>
       <SnackBar error title={errorMsg} onClose={() => setErrorMsg(undefined)} />
     </>
