@@ -1,14 +1,14 @@
 import { describe, expect, test } from 'vitest';
-import { render } from '@testing-library/react';
+import { renderWithProviders } from '../../lib/test-utils';
 import FormCards from './FormCards';
 
 describe('<FormCards> component', () => {
   test('Shoud render', () => {
-    render(<FormCards />);
+    renderWithProviders(<FormCards />);
   });
 
   test('Shoud render UL list', () => {
-    const { container } = render(<FormCards />);
+    const { container } = renderWithProviders(<FormCards />);
     expect(container.firstChild?.nodeName.toUpperCase()).toEqual('UL');
   });
 
