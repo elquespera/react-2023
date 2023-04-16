@@ -11,12 +11,8 @@ export default function App() {
       <Provider store={store}>
         <BrowserRouter>
           <Routes>
-            {ROUTES.map(({ to, title, testId, page: Page }) => (
-              <Route
-                key={to}
-                path={to}
-                element={<Layout title={title} page={<Page />} testId={testId} />}
-              />
+            {ROUTES.map(({ to, title, page: Page }) => (
+              <Route key={to} path={to} element={<Layout title={title} page={<Page />} />} />
             ))}
           </Routes>
         </BrowserRouter>
