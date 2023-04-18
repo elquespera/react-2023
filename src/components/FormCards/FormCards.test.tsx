@@ -11,9 +11,4 @@ describe('<FormCards> component', () => {
     const { container } = renderWithProviders(<FormCards />);
     expect(container.firstChild?.nodeName.toUpperCase()).toEqual('UL');
   });
-
-  test('Shoud have 2 cards', () => {
-    // const { container } = render(<FormCards />);
-    // expect(container.firstChild?.childNodes.length).toEqual(data.length);
-  });
 });

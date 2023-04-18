@@ -10,6 +10,7 @@
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "lint": "eslint . --ext .ts,.tsx",
+    "check": "npm run lint && tsc",
     "format": "eslint . --ext .ts,.tsx --fix",
     "prepare": "husky install"
   },

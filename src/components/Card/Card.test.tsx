@@ -16,6 +16,6 @@ describe('<Card> component', () => {
     renderWithProviders(<Card id={data.id} title={data.title} image={data.image} />);
     const card = screen.getByText(data.title);
     fireEvent.click(card);
-    // expect(screen.findByText(data.species));
+    expect(screen.getByTestId('modal-portal')).toBeDefined();
   });
 });
