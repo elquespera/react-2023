@@ -6,13 +6,12 @@ import Input from '../Input/Input';
 import SnackBar from '../SnackBar/SnackBar';
 import styles from './PropertyForm.module.scss';
 import { useForm } from 'react-hook-form';
+import { addSubmission } from '../../store/submissions';
+import { useAppDispatch } from '../../store/hooks';
 
-interface PropertyFormProps {
-  onSubmit: (data: PropertyData) => void;
-}
-
-export default function PropertyForm({ onSubmit }: PropertyFormProps) {
+export default function PropertyForm() {
   const [successMsg, setSuccessMsg] = useState<string>();
+  const dispatch = useAppDispatch();
 
   const {
     register,
@@ -23,7 +22,7 @@ export default function PropertyForm({ onSubmit }: PropertyFormProps) {
   } = useForm<PropertyData>();
 
   const submit = (data: PropertyData) => {
-    onSubmit({ ...data, id: crypto.randomUUID() });
+    dispatch(addSubmission({ ...data, id: crypto.randomUUID() }));
     setSuccessMsg('Your property was added successfully!');
     reset();
   };
