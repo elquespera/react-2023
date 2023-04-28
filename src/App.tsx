@@ -1,22 +1,17 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
 import { ROUTES } from './routes';
 import Layout from './routes/Layout';
-import React from 'react';
-import { Provider } from 'react-redux';
 import { store } from './store/store';
 
 export default function App() {
   return (
-    <React.StrictMode>
-      <Provider store={store}>
-        <BrowserRouter>
-          <Routes>
-            {ROUTES.map(({ to, title, page: Page }) => (
-              <Route key={to} path={to} element={<Layout title={title} page={<Page />} />} />
-            ))}
-          </Routes>
-        </BrowserRouter>
-      </Provider>
-    </React.StrictMode>
+    <Provider store={store}>
+      <Routes>
+        {ROUTES.map(({ to, title, page: Page }) => (
+          <Route key={to} path={to} element={<Layout title={title} page={<Page />} />} />
+        ))}
+      </Routes>
+    </Provider>
   );
 }
