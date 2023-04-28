@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "tsx server",
-    "build": "tsx server",
-    "build:server": "tsc && vite build",
-    "preview": "vite preview",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "vite build --outDir dist/client --ssrManifest",
+    "build:server": "vite build --outDir dist/server --ssr ./entry-server.tsx",
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "lint": "eslint . --ext .ts,.tsx",
