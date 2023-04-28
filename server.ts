@@ -1,4 +1,6 @@
 import express, { Express, Request, Response } from 'express';
+import { VITE_PORT } from './src/consts';
+import { ROUTES } from './src/routes';
 // import fs from 'fs';
 
 // async function configProd(app: Express) {
@@ -34,24 +36,27 @@ async function configDev(app: Express) {
 
   app.use(viteServer.middlewares);
 
-  app.use('/', async (req: Request, res: Response) => {
-    try {
-      const render = (await viteServer.ssrLoadModule('./entry-server.tsx')).render;
-      render(req, res, `/src/main.tsx`);
-    } catch (err) {
-      const e = err as Error;
-      viteServer.ssrFixStacktrace(e);
-      console.log(e.stack);
-      res.status(500).end(e.stack);
+  app.use(
+    ROUTES.map((route) => route.to),
+    async (req: Request, res: Response) => {
+      try {
+        const render = (await viteServer.ssrLoadModule('./entry-server.tsx')).render;
+        render(req, res, `/src/main.tsx`);
+      } catch (err) {
+        const e = err as Error;
+        viteServer.ssrFixStacktrace(e);
+        console.log(e.stack);
+        res.status(500).end(e.stack);
+      }
     }
-  });
+  );
   return app;
 }
 
-const DEFAULT_PORT = 5173;
+// const DEFAULT_PORT = 5173;
 
 // const isProd = process.env.NODE_ENV === 'production';
-const port = process.env.PORT || DEFAULT_PORT;
+const port = process.env.PORT || VITE_PORT;
 const app = express();
 
 // const config = isProd ? configProd : configDev;

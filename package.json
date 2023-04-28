@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "tsx server",
-    "build": "tsc && vite build",
+    "build": "tsx server",
+    "build:server": "tsc && vite build",
     "preview": "vite preview",
     "test": "vitest",
     "coverage": "vitest run --coverage",
