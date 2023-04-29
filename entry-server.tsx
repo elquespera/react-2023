@@ -6,10 +6,9 @@ import Html from './src/Html';
 import { StaticRouter } from 'react-router-dom/server';
 
 export function render(req: Request, res: Response, bootstrap: string) {
-  console.log(req.originalUrl);
   const { pipe } = ReactDOMServer.renderToPipeableStream(
     <Html>
-      <StaticRouter location={req.url}>
+      <StaticRouter location={req.originalUrl}>
         <App />
       </StaticRouter>
     </Html>,
@@ -18,6 +17,9 @@ export function render(req: Request, res: Response, bootstrap: string) {
         res.statusCode = 200;
         res.setHeader('content-type', 'text/html');
         pipe(res);
+      },
+      onAllReady() {
+        res.end();
       },
       bootstrapModules: [bootstrap],
     }

@@ -17,9 +17,10 @@
     "jsx": "react-jsx"    
   },
   "ts-node": {
-    "esm": true
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
   },
-  "include": ["src"],
+  "include": ["vite.config.ts", "src"],
   "types": ["vite/client"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
