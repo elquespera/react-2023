@@ -6,4 +6,4 @@ export const ADDRESS_PATTERN = /.{10,}/;
 
 export const SNACKBAR_TIMEOUT = 6000;
 
-export const VITE_PORT = 5173;
+export const VITE_PORT = 3000;

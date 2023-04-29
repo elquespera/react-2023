@@ -1,30 +1,36 @@
+import { fetch } from 'cross-fetch';
 import express, { Express, Request, Response } from 'express';
+import { readFileSync } from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { createServer } from 'vite';
 import { VITE_PORT } from './src/consts';
 
-async function configDev(app: Express) {
-  const cwd = process.cwd();
-  const vite = await import('vite');
+global.fetch = fetch;
 
-  const viteServer = await vite.createServer({
-    root: cwd,
-    server: {
-      middlewareMode: true,
-      hmr: true,
-    },
+const DIR = path.dirname(fileURLToPath(import.meta.url));
+const INDEX_HTML = path.resolve(DIR, 'index.html');
+const SERVER_ENTRY = path.resolve(DIR, 'src/server-entry.tsx');
+
+async function configApp(app: Express) {
+  const viteServer = await createServer({
+    server: { middlewareMode: true },
     appType: 'custom',
   });
 
   app.use(viteServer.middlewares);
 
-  app.use('/', async (req: Request, res: Response) => {
+  app.use('*', async (req: Request, res: Response, next) => {
+    const url = req.originalUrl;
     try {
-      const { render } = await viteServer.ssrLoadModule('./entry-server.tsx');
-      render(req, res, `/src/main.tsx`);
+      const html = await viteServer.transformIndexHtml(url, readFileSync(INDEX_HTML, 'utf-8'));
+      const { render } = await viteServer.ssrLoadModule(SERVER_ENTRY);
+
+      render(url, res, html);
     } catch (err) {
       const e = err as Error;
       viteServer.ssrFixStacktrace(e);
-      console.log(e.stack);
-      res.status(500).end(e.stack);
+      next(e);
     }
   });
   return app;
@@ -33,10 +39,10 @@ async function configDev(app: Express) {
 const port = process.env.PORT || VITE_PORT;
 const app = express();
 
-configDev(app)
+configApp(app)
   .then((app) => {
     app.listen(port, () => {
-      console.log(`Listening at http://localhost:${port}`);
+      console.log(`🚀 Server started at http://localhost:${port}`);
     });
   })
   .catch(console.error);
