@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 
 .coverage
+coverage
+.nyc_output
+cypress/videos

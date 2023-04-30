@@ -16,6 +16,6 @@ npm install
 
 ### NPM Scripts
 
-1. `npm run dev` - run in development mode
+1. `npm start`, `npm run dev` - run server
 2. `npm run lint` - run **eslint**
-3. `npm run coverage` - run all tests and compute test coverage
+3. `npm run cy:coverage` - run cypress e2e tests and compute coverage. Note that the server should be started with `npm start` concurrently.

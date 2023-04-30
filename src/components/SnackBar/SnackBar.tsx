@@ -22,7 +22,7 @@ export default function SnackBar({ title, error, onClose }: SnackBarProps) {
   if (!title) return null;
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} data-testid="snackbar">
       <div className={clsx(styles.content, error && styles.error)}>
         <button className={styles.close} onClick={handleClose}>
           <Icon type="close" />
