@@ -4,13 +4,13 @@ import { readFileSync } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { createServer } from 'vite';
-import { VITE_PORT } from './src/consts';
+import { VITE_PORT } from './consts';
 
 global.fetch = fetch;
 
 const DIR = path.dirname(fileURLToPath(import.meta.url));
-const INDEX_HTML = path.resolve(DIR, 'index.html');
-const SERVER_ENTRY = path.resolve(DIR, 'src/server-entry.tsx');
+const INDEX_HTML = path.resolve(DIR, '../index.html');
+const SERVER_ENTRY = path.resolve(DIR, './server-entry.tsx');
 
 async function configApp(app: Express) {
   const viteServer = await createServer({
