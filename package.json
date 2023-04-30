@@ -14,7 +14,8 @@
     "lint": "eslint . --ext .ts,.tsx",
     "check": "npm run lint && tsc",
     "format": "eslint . --ext .ts,.tsx --fix",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "cypress": "cypress open"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
@@ -36,6 +37,7 @@
     "@typescript-eslint/parser": "^5.55.0",
     "@vitejs/plugin-react": "^3.1.0",
     "@vitest/coverage-c8": "^0.29.3",
+    "cypress": "^12.11.0",
     "eslint": "^8.36.0",
     "eslint-config-prettier": "^8.7.0",
     "eslint-plugin-import": "^2.27.5",
