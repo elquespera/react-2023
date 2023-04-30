@@ -1,4 +1,4 @@
-describe('Open Pages', () => {
+describe('Navigation', () => {
   it('Should open home page', () => {
     cy.visit('/');
     cy.contains('h2', 'Home');
@@ -22,7 +22,9 @@ describe('Open Pages', () => {
     cy.get(`a[href="/add-property"]`).click();
     cy.contains('h2', 'Add Property');
   });
+});
 
+describe('Search', () => {
   it('Search should work', () => {
     cy.visit('/');
     cy.get(`input[placeholder="Search by name"`).type('Luxury');
@@ -30,6 +32,16 @@ describe('Open Pages', () => {
     cy.contains('Luxury Villa');
   });
 
+  it('Search should be empty when nothing is found', () => {
+    cy.visit('/');
+    cy.get(`input[placeholder="Search by name"`).type('bla bla bla');
+    cy.get('form[data-testid="search-bar-form"]').submit();
+    cy.get('main ul>li').should('not.exist');
+    cy.contains('div', 'No properties were found for your request');
+  });
+});
+
+describe('Modal', () => {
   it('Modal should open', () => {
     cy.visit('/');
     cy.get(`main ul>li`).first().click();
@@ -50,7 +62,9 @@ describe('Open Pages', () => {
     cy.get(`div[data-testid="modal-portal"]`).type('{esc}');
     cy.get(`div[data-testid="modal-portal"]`).should('not.exist');
   });
+});
 
+describe('Add Property form', () => {
   it('Adding property should work', () => {
     cy.visit('/add-property');
     cy.get(`input[id="title"]`).type('Amazing house');
