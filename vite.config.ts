@@ -16,6 +16,9 @@ export default defineConfig(() => {
         requireEnv: false,
       }),
     ],
+    build: {
+      sourcemap: true,
+    },
     test: {
       setupFiles: './src/vitest.setup.ts',
       globals: true,

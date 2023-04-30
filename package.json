@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "start": "npm run dev",
     "dev": "ts-node ./src/server.ts",
     "watch": "nodemon ./src/server.ts",
     "build": "npm run build:client && npm run build:server",
