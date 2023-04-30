@@ -24,7 +24,11 @@ const ICONS: { [key in IconType]: React.FC | undefined } = {
 export default function Icon({ type, className, ...props }: IconProps) {
   const CurrentIcon = ICONS[type];
   return (
-    <span {...props} className={clsx(styles.icon, className)}>
+    <span
+      {...props}
+      className={clsx(styles.icon, className)}
+      style={{ display: 'inline-block', width: '1em', height: '1em' }}
+    >
       {CurrentIcon && <CurrentIcon />}
     </span>
   );
